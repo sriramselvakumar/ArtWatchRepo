@@ -1,0 +1,19 @@
+.Icon {
+  height: 160px;
+  width: 160px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Headings {
+  text-align: center;
+}
+
+.cardText {
+  text-align: center;
+}
+
+.page {
+  background-color: black;
+}

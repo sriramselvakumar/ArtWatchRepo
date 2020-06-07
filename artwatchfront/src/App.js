@@ -1,9 +1,24 @@
 import React from "react";
-import logo from "./logo.svg";
+import Navbar from "./Components/Navbar";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import HomePage from "./Pages/Home";
+import LoginPage from "./Pages/Login";
+import RegisterPage from "./Pages/Register";
 import "./App.css";
 
 function App() {
-  return <h1>Hello World</h1>;
+  return (
+    <React.Fragment>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path="/" exact component={HomePage} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/register" component={RegisterPage} />
+        </Switch>
+      </Router>
+    </React.Fragment>
+  );
 }
 
 export default App;
