@@ -1,12 +1,22 @@
+const config = require("config");
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const Registration = require("./Routes/Registration");
+const Login = require("./Routes/Login");
+
+if (!config.get("jwtPrivateKey")) {
+  console.error("FATAL ERROR: jwtPrivateKey is not defined");
+  process.exit(1);
+}
 
 require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, {
@@ -14,6 +24,9 @@ mongoose.connect(uri, {
   useNewUrlParser: true,
   useCreateIndex: true,
 });
+
+app.use("/api/register", Registration);
+app.use("/api/login", Login);
 
 const connection = mongoose.connection;
 connection.once("open", () => {
