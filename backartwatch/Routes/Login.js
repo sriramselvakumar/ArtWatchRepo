@@ -7,7 +7,7 @@ const Joi = require("joi");
 router.post("/", async (req, res) => {
   const { error } = validateUser(req.body);
   if (error) {
-    return res.status(400).send(error.details[0].message);
+    return res.status(400).send("Invalid password or email ");
   }
   let user = await User.findOne({ email: req.body.email });
   if (!user) {
@@ -19,7 +19,7 @@ router.post("/", async (req, res) => {
     return res.status(400).send("Invalid Password or Email ");
   }
   const token = user.generateJWT();
-  res.header("x-auth-token", token).send("you are logged in ");
+  res.header("x-auth-token", token).send(token);
 });
 
 function validateUser(req) {
