@@ -2,17 +2,13 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Jumbotron from "react-bootstrap/Jumbotron";
-import Alert from "react-bootstrap/Alert";
-import http from "../axiosconfig/authaxios";
-import Navbar from "../Components/Navbar";
-import def from "../default.json";
+import axios from "axios";
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
       password: "",
-      alert: false,
     };
   }
   onChangeEmail = (e) => {
@@ -22,20 +18,6 @@ class Login extends Component {
   onChangePassword = (e) => {
     this.setState({ password: e.target.value });
   };
-  onChangeAlert = () => {
-    this.setState({ alert: !this.state.alert });
-  };
-
-  alertRender = () => {
-    if (this.state.alert) {
-      return (
-        <Alert variant="danger" onClose={this.onChangeAlert} dismissible>
-          <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
-          <p>You entered an invalid email or password</p>
-        </Alert>
-      );
-    }
-  };
 
   onSubmit = async (e) => {
     e.preventDefault();
@@ -44,11 +26,11 @@ class Login extends Component {
       password: this.state.password,
     };
     try {
-      let response = await http.post(def.baseURL + "/login", user);
+      let response = await axios.post("http://localhost:5000/api/login", user);
+      localStorage.setItem("token", response.data);
       console.log(response.data);
     } catch (error) {
       console.log(error.message);
-      this.onChangeAlert();
     }
     this.setState({
       email: "",
@@ -58,9 +40,7 @@ class Login extends Component {
   render() {
     return (
       <React.Fragment>
-        <Navbar showLogout={false} showLogin={false} showRegister={true} />
         <Jumbotron>
-          {this.alertRender()}
           <h1 className="text-center">Login To Our Community</h1>
           <Form onSubmit={this.onSubmit}>
             <Form.Group className="px-2" md="4" controlId="formGroupEmail">
