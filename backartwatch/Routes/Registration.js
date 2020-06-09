@@ -24,7 +24,10 @@ router.post("/", async (req, res) => {
     user.password = await bcrypt.hash(user.password, salt);
     await user.save();
     const token = user.generateJWT();
-    res.header("x-auth-token", token).send("user added");
+    res
+      .header("x-auth-token", token)
+      .header("access-control-expose-headers", "x-auth-token")
+      .send(token);
   } catch (error) {
     res.status(400).send(error.message);
   }

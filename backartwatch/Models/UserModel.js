@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 
 const UserSchema = new mongoose.Schema({
-  firstName: { type: String, required: true, minlength: 2, maxlength: 60 },
+  firstName: { type: String, required: true, minlength: 1, maxlength: 60 },
   lastName: { type: String, required: true, minlength: 1, maxlength: 80 },
   email: {
     type: String,
@@ -18,9 +18,7 @@ const UserSchema = new mongoose.Schema({
 UserSchema.methods.generateJWT = function () {
   const token = jwt.sign(
     {
-      _id: this._id,
-      firstName: this.firstName,
-      email: this.email,
+      id: this._id,
     },
     config.get("jwtPrivateKey")
   );

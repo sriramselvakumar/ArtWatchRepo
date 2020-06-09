@@ -7,11 +7,13 @@ import { Link } from "react-router-dom";
 import "../CSS/Home.css";
 import Card from "react-bootstrap/Card";
 import CardDeck from "react-bootstrap/CardDeck";
+import Navbar from "../Components/Navbar";
 
 class HomePage extends Component {
   render() {
     return (
       <React.Fragment>
+        <Navbar showLogin={true} showRegister={true} showLogout={false} />
         <Jumbotron>
           <Image className="Icon" src={ArtWatchIcon} />
           <h1 className="Headings">Welcome To ArtWatch</h1>

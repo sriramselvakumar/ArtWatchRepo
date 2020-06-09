@@ -5,6 +5,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const Registration = require("./Routes/Registration");
 const Login = require("./Routes/Login");
+const UserInformation = require("./Routes/UserInfo");
 
 if (!config.get("jwtPrivateKey")) {
   console.error("FATAL ERROR: jwtPrivateKey is not defined");
@@ -27,6 +28,7 @@ mongoose.connect(uri, {
 
 app.use("/api/register", Registration);
 app.use("/api/login", Login);
+app.use("/api/getuser", UserInformation);
 
 const connection = mongoose.connection;
 connection.once("open", () => {
@@ -36,3 +38,5 @@ connection.once("open", () => {
 app.listen(port, () => {
   console.log("Server runnin");
 });
+
+module.exports.secureKey = config.get("jwtPrivateKey");

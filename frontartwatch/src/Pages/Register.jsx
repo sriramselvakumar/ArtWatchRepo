@@ -3,7 +3,9 @@ import Jumbotron from "react-bootstrap/Jumbotron";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import axios from "axios";
+import Navbar from "../Components/Navbar";
+import http from "../axiosconfig/authaxios";
+import def from "../default.json";
 class Register extends Component {
   constructor(props) {
     super(props);
@@ -34,18 +36,18 @@ class Register extends Component {
     };
 
     try {
-      let response = await axios.post(
-        "http://localhost:5000/api/register",
-        user
-      );
+      let response = await http.post(def.baseURL + "/register", user);
+      localStorage.setItem("token", response.data);
       console.log(response.data);
     } catch (error) {
       console.log(error);
     }
+    window.location = "/createprofile";
   };
   render() {
     return (
       <React.Fragment>
+        <Navbar showRegister={false} showLogin={true} showLogout={false} />
         <Jumbotron>
           <h1>Join Our Community</h1>
           <Form onSubmit={this.onSubmit}>
