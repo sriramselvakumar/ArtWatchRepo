@@ -7,7 +7,7 @@ class RegisterButton extends Component {
   render() {
     return (
       <Link to="/register">
-        <Button variant="outline-success">Register</Button>;
+        <Button variant="outline-success">Register</Button>
       </Link>
     );
   }

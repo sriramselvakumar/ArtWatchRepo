@@ -36,7 +36,7 @@ class Register extends Component {
     };
 
     try {
-      let response = await http.post(def.baseURL + "/register", user);
+      let response = await http.post(def.baseURL + "register", user);
       localStorage.setItem("token", response.data);
       console.log(response.data);
     } catch (error) {
@@ -47,7 +47,7 @@ class Register extends Component {
   render() {
     return (
       <React.Fragment>
-        <Navbar showRegister={false} showLogin={true} showLogout={false} />
+        <Navbar showLogin={true} />
         <Jumbotron>
           <h1>Join Our Community</h1>
           <Form onSubmit={this.onSubmit}>

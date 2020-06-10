@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
+const fs = require("fs");
+const path = require("path");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -26,6 +28,20 @@ router.get("/me", auth, async (req, res) => {
 router.put("/", auth, upload.single("avatar"), async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
+    if (user.profilePictureName !== "Default.png") {
+      const pathname = path.join(
+        __dirname,
+        "..",
+        "uploads",
+        user.profilePictureName
+      );
+      await fs.unlink(pathname, (err) => {
+        if (err) {
+          console.log("failed to delete image");
+        } else {
+        }
+      });
+    }
     user.profilePictureName = req.file.filename;
     await user.save();
     res.send(user);

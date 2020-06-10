@@ -1,20 +1,20 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import http from "../axiosconfig/authaxios";
 import Form from "react-bootstrap/Form";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Image from "react-bootstrap/Image";
-import ArtWatchIcon from "../Images/ArtWatchIcon.png";
-import "../CSS/Home.css";
 import def from "../default.json";
 import Button from "react-bootstrap/Button";
 
-class Profile extends Component {
+class ProfilePic extends Component {
   constructor(props) {
     super(props);
     this.state = {
       firstName: "",
       file: "",
+      fileName: "",
     };
   }
 
@@ -23,27 +23,26 @@ class Profile extends Component {
   }
   getUserInfo = async () => {
     try {
-      const response = await http.get(def.baseURL + "/getuser/me");
-      this.setState({ firstName: response.data.firstName });
+      let response = await http.get(def.baseURL + "getuser/me");
+      this.setState({
+        firstName: response.data.firstName,
+        fileName: def.uploadsURL + response.data.profilePictureName,
+      });
     } catch (error) {
       console.log(error.message);
     }
   };
 
-  handleFile = (e) => {
+  handleFile = async (e) => {
     let file = e.target.files[0];
-    this.setState({ file: file });
-  };
-
-  onSubmit = async (e) => {
-    e.preventDefault();
-    let file = this.state.file;
     let formData = new FormData();
     formData.append("avatar", file);
 
     try {
-      let response = await http.put(def.baseURL + "/getuser", formData);
-      console.log(response.data);
+      let response = await http.put(def.baseURL + "getuser", formData);
+      this.setState({
+        fileName: def.uploadsURL + response.data.profilePictureName,
+      });
     } catch (error) {
       console.log(error.message);
     }
@@ -55,12 +54,12 @@ class Profile extends Component {
         <Navbar showLogout={true} />
         <Jumbotron>
           <h1 className="Headings">
-            Hey {this.state.firstName}, Add your Profile Picture{" "}
+            Hey {this.state.firstName},Please Add your Profile Picture!{" "}
           </h1>
-          <Image className="Icon" src={ArtWatchIcon} rounded />
+          <Image className="Icon" src={this.state.fileName} rounded />
 
           <div className="row">
-            <div className="mx-auto">
+            <div className="Icon">
               <Form>
                 <Form.Group>
                   <Form.File
@@ -69,11 +68,27 @@ class Profile extends Component {
                     onChange={this.handleFile}
                   />
                 </Form.Group>
-                <Button variant="primary" onClick={this.onSubmit}>
-                  Upload
-                </Button>
               </Form>
             </div>
+          </div>
+          <div className="text-center ">
+            <Link to="/myprofile">
+              <Button
+                className="text-center mr-1"
+                variant="primary"
+                onClick={this.onSubmit}
+              >
+                Upload
+              </Button>
+
+              <Button
+                onClick={this.onSkip}
+                className="text-center mr-1"
+                variant="success"
+              >
+                Skip Step
+              </Button>
+            </Link>
           </div>
         </Jumbotron>
       </React.Fragment>
@@ -81,4 +96,4 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+export default ProfilePic;

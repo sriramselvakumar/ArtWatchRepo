@@ -1,0 +1,9 @@
+.profilePicture {
+  height: 300px;
+  width: 300px;
+}
+.jumbo {
+  background-color: burlywood;
+  display: flex;
+  padding: 10px;
+}
