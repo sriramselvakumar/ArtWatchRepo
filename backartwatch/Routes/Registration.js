@@ -2,6 +2,7 @@ const { User } = require("../Models/UserModel");
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
+
 router.get("/", async (req, res) => {
   const users = await User.find().sort({ lastName: 1 });
   res.send(users);

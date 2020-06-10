@@ -42,7 +42,7 @@ class Register extends Component {
     } catch (error) {
       console.log(error);
     }
-    window.location = "/createprofile";
+    window.location = "/createprofilepic";
   };
   render() {
     return (

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HomePage from "./Pages/Home";
 import LoginPage from "./Pages/Login";
 import RegisterPage from "./Pages/Register";
-import ProfilePage from "./Pages/Profile";
+import ProfilePic from "./Pages/ProfilePic";
 import "./App.css";
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
           <Route path="/" exact component={HomePage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />
-          <Route path="/createprofile" component={ProfilePage} />
+          <Route path="/createprofilepic" component={ProfilePic} />
         </Switch>
       </Router>
     </React.Fragment>
