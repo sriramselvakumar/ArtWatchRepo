@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Jumbotron from "react-bootstrap/Jumbotron";
+import Navbar from "../Components/Navbar";
 import axios from "axios";
+import def from "../default.json";
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -26,21 +28,19 @@ class Login extends Component {
       password: this.state.password,
     };
     try {
-      let response = await axios.post("http://localhost:5000/api/login", user);
+      let response = await axios.post(def.baseURL + "login", user);
       localStorage.setItem("token", response.data);
       console.log(response.data);
     } catch (error) {
       console.log(error.message);
     }
-    this.setState({
-      email: "",
-      password: "",
-    });
+    window.location = "/myprofile";
   };
   render() {
     return (
       <React.Fragment>
-        <Jumbotron>
+        <Navbar showRegister={true} />
+        <Jumbotron className="myJumbotron">
           <h1 className="text-center">Login To Our Community</h1>
           <Form onSubmit={this.onSubmit}>
             <Form.Group className="px-2" md="4" controlId="formGroupEmail">

@@ -2,7 +2,6 @@ const { User } = require("../Models/UserModel");
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
-
 router.get("/", async (req, res) => {
   const users = await User.find().sort({ lastName: 1 });
   res.send(users);
@@ -19,16 +18,14 @@ router.post("/", async (req, res) => {
       lastName: req.body.lastName,
       email: req.body.email,
       password: req.body.password,
+      profilePictureName: "Default.png",
     });
 
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
     await user.save();
     const token = user.generateJWT();
-    res
-      .header("x-auth-token", token)
-      .header("access-control-expose-headers", "x-auth-token")
-      .send(token);
+    res.header("x-auth-token", token).send(token);
   } catch (error) {
     res.status(400).send(error.message);
   }

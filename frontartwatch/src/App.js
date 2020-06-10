@@ -4,6 +4,7 @@ import HomePage from "./Pages/Home";
 import LoginPage from "./Pages/Login";
 import RegisterPage from "./Pages/Register";
 import ProfilePic from "./Pages/ProfilePic";
+import Profile from "./Pages/Profile";
 import "./App.css";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />
           <Route path="/createprofilepic" component={ProfilePic} />
+          <Route path="/myprofile" component={Profile} />
         </Switch>
       </Router>
     </React.Fragment>
