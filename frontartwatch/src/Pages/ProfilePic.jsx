@@ -72,20 +72,12 @@ class ProfilePic extends Component {
             </div>
           </div>
           <div className="text-center ">
-            <Link to="/myprofile">
-              <Button
-                className="text-center mr-1"
-                variant="primary"
-                onClick={this.onSubmit}
-              >
+            <Link to="/createdescription">
+              <Button className="mr-1" variant="primary">
                 Upload
               </Button>
 
-              <Button
-                onClick={this.onSkip}
-                className="text-center mr-1"
-                variant="success"
-              >
+              <Button className="mr-1" variant="success">
                 Skip Step
               </Button>
             </Link>

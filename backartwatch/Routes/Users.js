@@ -25,6 +25,17 @@ router.get("/me", auth, async (req, res) => {
   }
 });
 
+router.put("/updatedescription", auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+    user.description = req.body.description;
+    await user.save();
+    res.send("description added");
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
 router.put("/", auth, upload.single("avatar"), async (req, res) => {
   try {
     const user = await User.findById(req.user.id);

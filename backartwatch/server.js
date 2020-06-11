@@ -6,6 +6,7 @@ const cookieParser = require("cookie-parser");
 const Registration = require("./Routes/Registration");
 const Login = require("./Routes/Login");
 const UserInformation = require("./Routes/Users");
+const Post = require("./Routes/Posts");
 
 if (!config.get("jwtPrivateKey")) {
   console.error("FATAL ERROR: jwtPrivateKey is not defined");
@@ -29,6 +30,7 @@ app.use("/uploads", express.static("uploads"));
 app.use("/api/register", Registration);
 app.use("/api/login", Login);
 app.use("/api/getuser", UserInformation);
+app.use("/api/post", Post);
 
 const connection = mongoose.connection;
 connection.once("open", () => {

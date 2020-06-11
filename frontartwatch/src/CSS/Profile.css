@@ -3,7 +3,14 @@
   width: 300px;
 }
 .jumbo {
-  background-color: burlywood;
-  display: flex;
+  background-color: #cdcdcd;
+
   padding: 10px;
+}
+
+.details {
+  border: 2px;
+  padding: 10px;
+  border-radius: 25px;
+  background-color: whitesmoke;
 }

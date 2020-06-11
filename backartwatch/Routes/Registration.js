@@ -19,6 +19,7 @@ router.post("/", async (req, res) => {
       email: req.body.email,
       password: req.body.password,
       profilePictureName: "Default.png",
+      description: "No Description Provided",
     });
 
     const salt = await bcrypt.genSalt(10);

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Navbar from "../Components/Navbar";
+import Navbar from "../Components/LogNavbar";
 import Image from "react-bootstrap/Image";
 import http from "../axiosconfig/authaxios";
 import "../CSS/Profile.css";
@@ -29,12 +29,14 @@ class Profile extends Component {
     const { firstName, lastName, fileName } = this.state;
     return (
       <React.Fragment>
-        <Navbar showLogout={true} />
+        <Navbar profile={true} />
         <div className="jumbo">
-          <Image className="profilePicture" src={fileName} rounded />
-          <h1 className="ml-2">
-            {firstName} {lastName}
-          </h1>
+          <div className="details">
+            <Image className="profilePicture" src={fileName} rounded />
+            <h1 className="ml-2">
+              {firstName} {lastName}
+            </h1>
+          </div>
         </div>
       </React.Fragment>
     );

@@ -14,6 +14,8 @@ const UserSchema = new mongoose.Schema({
   },
   password: { type: String, required: true, minlength: 9, maxlength: 90 },
   profilePictureName: { type: String },
+  description: { type: String },
+  posts: [{ type: String }],
 });
 
 UserSchema.methods.generateJWT = function () {
