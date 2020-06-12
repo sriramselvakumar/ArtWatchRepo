@@ -16,13 +16,23 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
+router.get("/:id", auth, async (req, res) => {
+  try {
+    let post = await Post.findById(req.params.id);
+    res.send(post);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
 router.post("/", auth, async (req, res) => {
   let post = new Post({
     name: req.body.name,
     description: req.body.description,
     filename: req.body.filename,
-    likes: req.body.likes,
+    likes: 0,
     date: req.body.date,
+    owner: req.user.id,
   });
   try {
     post = await post.save();

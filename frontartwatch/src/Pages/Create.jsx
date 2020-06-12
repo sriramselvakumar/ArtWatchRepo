@@ -37,7 +37,6 @@ class CreatePost extends Component {
       name: "",
       description: "",
       filename: "Default.png",
-      likes: 0,
       date: new Date(),
     };
     try {
@@ -59,7 +58,8 @@ class CreatePost extends Component {
     this.setState({ description: e.target.value });
   };
 
-  handleCreate = async () => {
+  handleCreate = async (e) => {
+    e.preventDefault();
     try {
       const { name, description, id } = this.state;
       const post = {
@@ -67,7 +67,7 @@ class CreatePost extends Component {
         description: description,
       };
       await http.put(def.baseURL + "post/final/" + id, post);
-      this.setState({ uploaded: true });
+      window.location = "/myprofile";
     } catch (error) {
       console.log(error.message);
     }
@@ -120,6 +120,7 @@ class CreatePost extends Component {
               <Button onClick={this.handleCreate} variant="success">
                 Create
               </Button>
+
               <Button className="ml-1" variant="danger">
                 Cancel
               </Button>

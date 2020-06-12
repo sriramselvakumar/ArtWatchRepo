@@ -6,6 +6,7 @@ const postSchema = new mongoose.Schema({
   filename: { type: String, required: true },
   likes: { type: Number },
   date: { type: Date },
+  owner: { type: String },
 });
 
 const Post = mongoose.model("Post", postSchema);

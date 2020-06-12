@@ -20,6 +20,9 @@ router.post("/", async (req, res) => {
       password: req.body.password,
       profilePictureName: "Default.png",
       description: "No Description Provided",
+      posts: [],
+      followers: [],
+      following: [],
     });
 
     const salt = await bcrypt.genSalt(10);

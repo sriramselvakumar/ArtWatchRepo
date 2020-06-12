@@ -1,16 +1,62 @@
 .profilePicture {
   height: 300px;
   width: 300px;
+  margin-left: 30px;
 }
 .jumbo {
   background-color: #cdcdcd;
-
   padding: 10px;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+
+  width: 400px;
+  margin-left: 80px;
+}
+
+.textDetails {
+  border: 2px;
+  width: 700px;
+  margin-left: 80px;
+}
+.statText {
+  font-size: 20px;
+}
+.followers {
+  margin-top: 20px;
+}
+.followersIcon {
+  margin-top: 22px;
+}
+.name {
+  font-weight: normal;
+  text-align: center;
+}
+.statsIcons {
+  width: 55px;
+  height: 55px;
+}
+.description {
+  display: flex;
+
+  height: 100px;
+}
+.Icons {
+  width: 50px;
+  height: 50px;
+}
+
+.Cards {
+  margin-top: 30px;
+  margin-left: 10px;
 }
 
 .details {
   border: 2px;
   padding: 10px;
+  display: flex;
   border-radius: 25px;
   background-color: whitesmoke;
 }

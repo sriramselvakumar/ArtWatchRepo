@@ -1,0 +1,19 @@
+.Icons {
+  width: 30px;
+  height: 30px;
+}
+.buttons {
+  display: flex;
+}
+.likeMargin {
+  margin-top: 3px;
+  font-size: 17px;
+}
+
+.editIcon {
+  margin-left: 80px;
+}
+
+.deleteIcon {
+  margin-left: 10px;
+}

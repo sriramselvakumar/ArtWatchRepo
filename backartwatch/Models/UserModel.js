@@ -16,6 +16,8 @@ const UserSchema = new mongoose.Schema({
   profilePictureName: { type: String },
   description: { type: String },
   posts: [{ type: String }],
+  followers: [{ type: String }],
+  following: [{ type: String }],
 });
 
 UserSchema.methods.generateJWT = function () {
