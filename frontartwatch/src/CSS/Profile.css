@@ -1,7 +1,6 @@
 .profilePicture {
   height: 300px;
   width: 300px;
-  margin-left: 30px;
 }
 .jumbo {
   background-color: #cdcdcd;
@@ -13,13 +12,10 @@
   flex-direction: column;
 
   width: 400px;
-  margin-left: 80px;
 }
 
 .textDetails {
-  border: 2px;
-  width: 700px;
-  margin-left: 80px;
+  width: 300px;
 }
 .statText {
   font-size: 20px;
@@ -54,9 +50,14 @@
 }
 
 .details {
-  border: 2px;
-  padding: 10px;
   display: flex;
-  border-radius: 25px;
-  background-color: whitesmoke;
+}
+
+.profileFlex {
+  display: flex;
+  flex-direction: row;
+}
+
+.cardMargin {
+  margin-top: 20px;
 }

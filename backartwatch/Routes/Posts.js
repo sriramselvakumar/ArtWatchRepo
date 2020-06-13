@@ -62,6 +62,16 @@ router.put("/:id", auth, upload.single("painting"), async (req, res) => {
   }
 });
 
+router.put("/updatelike/:id", auth, async (req, res) => {
+  try {
+    let post = await Post.findById(req.params.id);
+    post.likes += 1;
+    await post.save();
+  } catch (error) {
+    res.send(400).send("the post selected to update likes was not found");
+  }
+});
+
 router.put("/final/:id", auth, async (req, res) => {
   try {
     let post = await Post.findById(req.params.id);

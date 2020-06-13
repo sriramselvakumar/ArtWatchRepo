@@ -10,6 +10,8 @@ import followingIcon from "../Images/following.png";
 import postNumber from "../Images/instant-camera.png";
 import CardColumns from "react-bootstrap/CardColumns";
 import Postcard from "../Components/Postcard";
+import Card from "react-bootstrap/Card";
+import CardGroup from "react-bootstrap/CardGroup";
 
 class Profile extends Component {
   state = {
@@ -54,23 +56,10 @@ class Profile extends Component {
     try {
       const response = await http.get(def.baseURL + "getuser/me");
       const { posts } = response.data;
-      let postObjects = [];
-      for (let i = 0; i < posts.length; i++) {
-        let response = await http.get(def.baseURL + "post/" + posts[i]);
-        postObjects.push(response.data);
-      }
 
       this.setState({
-        finalPosts: postObjects.map((post) => {
-          return (
-            <Postcard
-              key={post._id}
-              Name={post.name}
-              Des={post.description}
-              File={def.uploadsURL + post.filename}
-              Likes={post.likes}
-            />
-          );
+        finalPosts: posts.map((post) => {
+          return <Postcard key={post} id={post} />;
         }),
       });
     } catch (error) {
@@ -93,53 +82,73 @@ class Profile extends Component {
     return (
       <React.Fragment>
         <Navbar profile={true} />
+
         <div className="jumbo">
-          <div className="container details">
-            <Image className="profilePicture" src={fileName} rounded />
-            <div className="textDetails">
-              <h1 className="name">
-                {firstName} {lastName}
-              </h1>
-              <div className="description container">
-                <Image className="Icons" src={descriptionIcon} />
-                <p>{description}</p>
-              </div>
-            </div>
-            <div className="stats">
-              <div className="description">
-                <Image
-                  className="statsIcons followersIcon"
-                  src={followersIcon}
-                />
-                <div>
-                  <h3 className="followers statText">Followers</h3>
-                  <h3 className="name statText text-center">
-                    {followers.length}
-                  </h3>
+          <CardGroup className="container">
+            <Card style={{ width: "345px" }}>
+              <Card.Body>
+                <Image className=" profilePicture" src={fileName} rounded />
+              </Card.Body>
+            </Card>
+
+            <Card style={{ width: "354px" }}>
+              <Card.Body>
+                <div className="textDetails">
+                  <h1 className="name">
+                    {firstName} {lastName}
+                  </h1>
+                  <div className="description ">
+                    <Image className="Icons" src={descriptionIcon} />
+                    <p>{description}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="description">
-                <Image
-                  className="statsIcons followersIcon"
-                  src={followingIcon}
-                />
-                <div>
-                  <h3 className="followers statText">Following</h3>
-                  <h3 className="name statText text-center">
-                    {following.length}
-                  </h3>
+              </Card.Body>
+            </Card>
+            <Card style={{ width: "240px" }}>
+              <Card.Body>
+                <div className="stats">
+                  <div className="description">
+                    <Image
+                      className="statsIcons followersIcon"
+                      src={followersIcon}
+                    />
+                    <div>
+                      <h3 className="followers statText">Followers</h3>
+                      <h3 className="name statText text-center">
+                        {followers.length}
+                      </h3>
+                    </div>
+                  </div>
+                  <div className="description">
+                    <Image
+                      className="statsIcons followersIcon"
+                      src={followingIcon}
+                    />
+                    <div>
+                      <h3 className="followers statText">Following</h3>
+                      <h3 className="name statText text-center">
+                        {following.length}
+                      </h3>
+                    </div>
+                  </div>
+                  <div className="description">
+                    <Image
+                      className="statsIcons followersIcon"
+                      src={postNumber}
+                    />
+                    <div>
+                      <h3 className="followers statText">Posts</h3>
+                      <h3 className="name statText text-center">
+                        {posts.length}
+                      </h3>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="description">
-                <Image className="statsIcons followersIcon" src={postNumber} />
-                <div>
-                  <h3 className="followers statText">Posts</h3>
-                  <h3 className="name statText text-center">{posts.length}</h3>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="Cards">
+              </Card.Body>
+            </Card>
+          </CardGroup>
+
+          <div className="container cardMargin">
             <CardColumns>{finalPosts}</CardColumns>
           </div>
         </div>

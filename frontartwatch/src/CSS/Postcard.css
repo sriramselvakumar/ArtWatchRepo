@@ -8,10 +8,11 @@
 .likeMargin {
   margin-top: 3px;
   font-size: 17px;
+  margin-left: 3px;
 }
 
 .editIcon {
-  margin-left: 80px;
+  margin-left: 140px;
 }
 
 .deleteIcon {
