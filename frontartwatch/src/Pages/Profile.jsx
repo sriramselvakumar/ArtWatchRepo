@@ -49,7 +49,14 @@ class Profile extends Component {
       followers: followers,
       following: following,
       posts: [...posts],
+      finalPosts: [],
     });
+  };
+
+  handleDelete = async (id) => {
+    const posts = this.state.finalPosts.filter((post) => post.key !== id);
+    this.setState({ finalPosts: posts });
+    const results = await http.delete(def.baseURL + "post/" + id);
   };
 
   loadUserPosts = async () => {
@@ -59,9 +66,13 @@ class Profile extends Component {
 
       this.setState({
         finalPosts: posts.map((post) => {
-          return <Postcard key={post} id={post} />;
+          return <Postcard key={post} onDelete={this.handleDelete} id={post} />;
         }),
       });
+      const example = this.state.finalPosts;
+      for (let i = 0; i < example.length; i++) {
+        console.log(example[i].key);
+      }
     } catch (error) {
       console.log(error.message);
     }

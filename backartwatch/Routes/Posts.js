@@ -88,7 +88,7 @@ router.put("/final/:id", auth, async (req, res) => {
 
 router.delete("/:id", auth, async (req, res) => {
   try {
-    let post = await Post.findById(req.params.id);
+    let post = await Post.findByIdAndRemove(req.params.id);
     if (post.filename !== "Default.png") {
       const pathname = path.join(__dirname, "..", "uploads", post.filename);
       await fs.unlink(pathname, (err) => {
@@ -98,7 +98,9 @@ router.delete("/:id", auth, async (req, res) => {
         }
       });
     }
-    await Post.findByIdAndRemove(req.params.id);
+    let user = await User.findById(req.user.id);
+    user.posts = user.posts.filter((post) => post !== req.params.id);
+    await user.save();
   } catch (error) {
     res.status(400).send(error.message);
   }

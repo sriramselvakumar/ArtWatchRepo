@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import Card from "react-bootstrap/Card";
-import Image from "react-bootstrap/Image";
 import "../CSS/Postcard.css";
-import EditIcon from "../Images/pen.png";
-import DeleteIcon from "../Images/x-button.png";
 import http from "../axiosconfig/authaxios";
 import def from "../default.json";
 
@@ -50,6 +47,7 @@ class PostCard extends Component {
               aria-hidden="true"
             ></i>
             <i
+              onClick={() => this.props.onDelete(this.props.id)}
               className="fa fa-trash-o fa-2x deleteIcon"
               aria-hidden="true"
             ></i>
