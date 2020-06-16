@@ -27,6 +27,11 @@ class PostCard extends Component {
       likes: likes,
     });
   };
+
+  handleEdit = () => {
+    localStorage.setItem("postID", this.props.id);
+    window.location = "/edit";
+  };
   render() {
     let { file, name, description, likes } = this.state;
     return (
@@ -43,6 +48,7 @@ class PostCard extends Component {
             <i class="fa fa-thumbs-up fa-2x" aria-hidden="true"></i>
             <h5 className="likeMargin"> {likes}</h5>
             <i
+              onClick={this.handleEdit}
               className="fa fa-pencil-square fa-2x editIcon "
               aria-hidden="true"
             ></i>

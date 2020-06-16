@@ -86,6 +86,17 @@ router.put("/final/:id", auth, async (req, res) => {
   }
 });
 
+router.put("/update/:id", auth, async (req, res) => {
+  try {
+    let post = await Post.findById(req.params.id);
+    post.name = req.body.name;
+    post.description = req.body.description;
+    await post.save();
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
 router.delete("/:id", auth, async (req, res) => {
   try {
     let post = await Post.findByIdAndRemove(req.params.id);

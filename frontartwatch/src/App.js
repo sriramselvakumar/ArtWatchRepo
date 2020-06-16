@@ -7,6 +7,8 @@ import ProfilePic from "./Pages/ProfilePic";
 import Profile from "./Pages/Profile";
 import Description from "./Pages/Description";
 import Create from "./Pages/Create";
+import Edit from "./Pages/Edit";
+import Feed from "./Pages/Feed";
 import "./App.css";
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
           <Route path="/myprofile" component={Profile} />
           <Route path="/createdescription" component={Description} />
           <Route path="/createpost" component={Create} />
+          <Route path="/edit" component={Edit} />
+          <Route path="/feed" component={Feed} />
         </Switch>
       </Router>
     </React.Fragment>

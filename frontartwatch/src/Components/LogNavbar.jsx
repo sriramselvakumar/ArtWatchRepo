@@ -7,12 +7,12 @@ import Settings from "../Images/setting.png";
 
 class LoggedNavbar extends Component {
   renderOptions = () => {
-    const { profile, feed, create } = this.props;
+    const { profile, feed, create, edit } = this.props;
     if (profile) {
       return (
         <React.Fragment>
           <Nav className="mr-auto">
-            <Nav.Link href="#">Feed</Nav.Link>
+            <Nav.Link href="/feed">Feed</Nav.Link>
             <Nav.Link href="/createpost">Create</Nav.Link>
           </Nav>
           <Nav className="ml-auto">
@@ -54,8 +54,30 @@ class LoggedNavbar extends Component {
       return (
         <React.Fragment>
           <Nav className="mr-auto">
-            <Nav.Link href="#">Feed</Nav.Link>
+            <Nav.Link href="/feed">Feed</Nav.Link>
             <Nav.Link href="/myprofile">Profile</Nav.Link>
+          </Nav>
+          <Nav className="ml-auto">
+            <Navbar.Brand href="#">
+              <img
+                alt="Settings icon"
+                src={Settings}
+                width="30"
+                height="30"
+                className="d-inline-block align-top"
+              />
+            </Navbar.Brand>
+            <Logout />
+          </Nav>
+        </React.Fragment>
+      );
+    } else if (edit) {
+      return (
+        <React.Fragment>
+          <Nav className="mr-auto">
+            <Nav.Link href="/feed">Feed</Nav.Link>
+            <Nav.Link href="/myprofile">Profile</Nav.Link>
+            <Nav.Link href="/createpost">Create</Nav.Link>
           </Nav>
           <Nav className="ml-auto">
             <Navbar.Brand href="#">

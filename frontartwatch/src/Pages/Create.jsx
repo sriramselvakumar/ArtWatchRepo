@@ -61,13 +61,13 @@ class CreatePost extends Component {
   handleCreate = async (e) => {
     e.preventDefault();
     try {
+      window.location = "/myprofile";
       const { name, description, id } = this.state;
       const post = {
         name: name,
         description: description,
       };
       await http.put(def.baseURL + "post/final/" + id, post);
-      window.location = "/myprofile";
     } catch (error) {
       console.log(error.message);
     }

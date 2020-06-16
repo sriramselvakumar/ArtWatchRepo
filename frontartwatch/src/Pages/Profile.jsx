@@ -56,7 +56,8 @@ class Profile extends Component {
   handleDelete = async (id) => {
     const posts = this.state.finalPosts.filter((post) => post.key !== id);
     this.setState({ finalPosts: posts });
-    const results = await http.delete(def.baseURL + "post/" + id);
+    this.setState({ posts: this.state.posts.filter((post) => post !== id) });
+    await http.delete(def.baseURL + "post/" + id);
   };
 
   loadUserPosts = async () => {
