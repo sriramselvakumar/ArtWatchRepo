@@ -28,7 +28,6 @@ class PostCard extends Component {
       description: description,
       likes: [...likes],
     });
-
     const isLiked = this.state.likes.includes(owner);
     if (isLiked) {
       this.setState({ likesClass: "fa fa-thumbs-up fa-2x" });

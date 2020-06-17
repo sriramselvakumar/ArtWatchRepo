@@ -25,6 +25,25 @@ router.get("/me", auth, async (req, res) => {
   }
 });
 
+router.get("/follow/:id/:isFollowed", auth, async (req, res) => {
+  const { id, isFollowed } = req.params;
+  const user = await User.findById(req.user.id);
+  const profile = await User.findById(id);
+  if (isFollowed === "1") {
+    user.following = user.following.filter((person) => person !== id);
+    profile.followers = profile.followers.filter(
+      (person) => person !== req.user.id
+    );
+    await user.save();
+    await profile.save();
+  } else if (isFollowed === "0") {
+    user.following.push(id);
+    profile.followers.push(req.user.id);
+    await user.save();
+    await profile.save();
+  }
+});
+
 router.get("/:id", auth, async (req, res) => {
   try {
     const user = await User.findById(req.params.id);

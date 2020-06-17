@@ -17,11 +17,11 @@ class Profile extends Component {
   state = {
     firstName: "",
     lastName: "",
-    fileName: "",
     description: "",
     followers: [],
     following: [],
     posts: [],
+    fileName: "",
     finalPosts: [],
   };
 
@@ -46,11 +46,12 @@ class Profile extends Component {
       lastName: lastName,
       fileName: def.uploadsURL + profilePictureName,
       description: description,
-      followers: followers,
-      following: following,
+      followers: [...followers],
+      following: [...following],
       posts: [...posts],
       finalPosts: [],
     });
+    console.log(this.state.followers);
   };
 
   handleDelete = async (id) => {
