@@ -67,7 +67,14 @@ class Profile extends Component {
 
       this.setState({
         finalPosts: posts.map((post) => {
-          return <Postcard key={post} onDelete={this.handleDelete} id={post} />;
+          return (
+            <Postcard
+              key={post}
+              edit={true}
+              onDelete={this.handleDelete}
+              id={post}
+            />
+          );
         }),
       });
       const example = this.state.finalPosts;

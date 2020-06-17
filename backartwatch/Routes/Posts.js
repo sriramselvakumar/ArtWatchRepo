@@ -16,6 +16,16 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
+router.get("/", auth, async (req, res) => {
+  try {
+    let posts = await Post.find();
+    posts = posts.filter((post) => post.owner !== req.user.id);
+    res.send(posts);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
 router.get("/:id", auth, async (req, res) => {
   try {
     let post = await Post.findById(req.params.id);
@@ -30,13 +40,28 @@ router.post("/", auth, async (req, res) => {
     name: req.body.name,
     description: req.body.description,
     filename: req.body.filename,
-    likes: 0,
+    likes: [],
     date: req.body.date,
     owner: req.user.id,
   });
   try {
     post = await post.save();
     res.send(post);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
+router.put("/updatelike/:id/:isLiked", auth, async (req, res) => {
+  const { id, isLiked } = req.params;
+  try {
+    let post = await Post.findById(id);
+    if (isLiked === "0") {
+      post.likes = post.likes.filter((user) => user !== req.user.id);
+    } else if (isLiked === "1") {
+      post.likes.push(req.user.id);
+    }
+    await post.save();
   } catch (error) {
     res.status(400).send(error.message);
   }
@@ -59,16 +84,6 @@ router.put("/:id", auth, upload.single("painting"), async (req, res) => {
     res.send(post);
   } catch (error) {
     res.status(400).send(error.message);
-  }
-});
-
-router.put("/updatelike/:id", auth, async (req, res) => {
-  try {
-    let post = await Post.findById(req.params.id);
-    post.likes += 1;
-    await post.save();
-  } catch (error) {
-    res.send(400).send("the post selected to update likes was not found");
   }
 });
 

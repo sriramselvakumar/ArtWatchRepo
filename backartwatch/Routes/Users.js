@@ -25,6 +25,13 @@ router.get("/me", auth, async (req, res) => {
   }
 });
 
+router.get("/:id", auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    res.send(user);
+  } catch (error) {}
+});
+
 router.put("/updatedescription", auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id);

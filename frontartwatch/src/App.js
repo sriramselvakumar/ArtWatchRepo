@@ -9,6 +9,7 @@ import Description from "./Pages/Description";
 import Create from "./Pages/Create";
 import Edit from "./Pages/Edit";
 import Feed from "./Pages/Feed";
+import ProfileView from "./Pages/ViewProfile";
 import "./App.css";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/createpost" component={Create} />
           <Route path="/edit" component={Edit} />
           <Route path="/feed" component={Feed} />
+          <Route path="/viewprofile" component={ProfileView} />
         </Switch>
       </Router>
     </React.Fragment>

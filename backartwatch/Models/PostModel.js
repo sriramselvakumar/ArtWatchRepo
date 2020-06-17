@@ -4,7 +4,7 @@ const postSchema = new mongoose.Schema({
   name: { type: String },
   description: { type: String },
   filename: { type: String, required: true },
-  likes: { type: Number },
+  likes: [{ type: String }],
   date: { type: Date },
   owner: { type: String },
 });
