@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
-const config = require("config");
+require("dotenv").config();
 
 const UserSchema = new mongoose.Schema({
   firstName: { type: String, required: true, minlength: 1, maxlength: 60 },
@@ -25,7 +25,7 @@ UserSchema.methods.generateJWT = function () {
     {
       id: this._id,
     },
-    config.get("jwtPrivateKey")
+    process.env.jwt_Private
   );
   return token;
 };

@@ -2,7 +2,7 @@
 
 This my source code for the front and backend of my application. The application has now completed its development stage and from now on there will be incremental updates brought to it. Watch this Github repository to be notified of the latest features implemented
 
-##Process for Testing
+## Process for Testing
 
 1. navigate to the ArtWatch folder using your terminal and navigate to `backartwatch` folder
 2. type and run the following `npm i` in the `backartwatch` folder
