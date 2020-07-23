@@ -7,6 +7,21 @@ router.get("/", async (req, res) => {
   res.send(users);
 });
 
+router.post("/validation", async (req, res) => {
+  const { firstName, lastName, email, password } = req.body;
+  if (firstName === "" || lastName === "") {
+    return res.send("Please enter your first name or last name");
+  }
+  let user = await User.findOne({ email });
+  if (user) {
+    return res.send("User already exists");
+  }
+  if (password.length < 9) {
+    return res.send("Password must be 9 characters long");
+  }
+  res.send(true);
+});
+
 router.post("/", async (req, res) => {
   try {
     let user = await User.findOne({ email: req.body.email });

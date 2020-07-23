@@ -1,4 +1,3 @@
-const config = require("config");
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -7,11 +6,6 @@ const Registration = require("./Routes/Registration");
 const Login = require("./Routes/Login");
 const UserInformation = require("./Routes/Users");
 const Post = require("./Routes/Posts");
-
-if (!config.get("jwtPrivateKey")) {
-  console.error("FATAL ERROR: jwtPrivateKey is not defined");
-  process.exit(1);
-}
 
 require("dotenv").config();
 const app = express();
@@ -40,5 +34,3 @@ connection.once("open", () => {
 app.listen(port, () => {
   console.log("Server runnin");
 });
-
-module.exports.secureKey = config.get("jwtPrivateKey");

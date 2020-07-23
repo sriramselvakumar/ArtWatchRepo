@@ -78,10 +78,6 @@ class Profile extends Component {
           );
         }),
       });
-      const example = this.state.finalPosts;
-      for (let i = 0; i < example.length; i++) {
-        console.log(example[i].key);
-      }
     } catch (error) {
       console.log(error.message);
     }

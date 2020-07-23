@@ -1,74 +1,87 @@
-import React, { Component } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import React, { useState } from "react";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Navbar from "../Components/Navbar";
-import axios from "axios";
+import LoginForm from "../Components/LoginForm";
+import http from "../axiosconfig/authaxios";
+import Card from "react-bootstrap/Card";
 import def from "../default.json";
-class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: "",
-      password: "",
-    };
-  }
-  onChangeEmail = (e) => {
-    this.setState({ email: e.target.value });
+import Alert from "react-bootstrap/Alert";
+import "../CSS/Login.css";
+const Login = () => {
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+  const [showAlert, setAlert] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const setEmail = (e) => {
+    let sample = user;
+    sample.email = e.target.value;
+    setUser(sample);
   };
 
-  onChangePassword = (e) => {
-    this.setState({ password: e.target.value });
+  const setPassword = (e) => {
+    let sample = user;
+    sample.password = e.target.value;
+    setUser(sample);
   };
 
-  onSubmit = async (e) => {
-    e.preventDefault();
-    const user = {
-      email: this.state.email,
-      password: this.state.password,
-    };
-    try {
-      let response = await axios.post(def.baseURL + "login", user);
-      localStorage.setItem("token", response.data);
-      console.log(response.data);
-    } catch (error) {
-      console.log(error.message);
+  const onSubmit = async () => {
+    let response = await http.post(def.loginUser, user);
+    if (response.data === false) {
+      setAlert(true);
+      setMessage("Invalid Email or Password");
+      return;
     }
+    localStorage.setItem("token", response.data);
     window.location = "/myprofile";
   };
-  render() {
-    return (
-      <React.Fragment>
-        <Navbar showRegister={true} />
-        <Jumbotron className="myJumbotron">
-          <h1 className="text-center">Login To Our Community</h1>
-          <Form onSubmit={this.onSubmit}>
-            <Form.Group className="px-2" md="4" controlId="formGroupEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Enter email"
-                value={this.state.email}
-                onChange={this.onChangeEmail}
-              />
-            </Form.Group>
-            <Form.Group className="px-2" controlId="formGroupPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Password"
-                value={this.state.password}
-                onChange={this.onChangePassword}
-              />
-            </Form.Group>
-            <Button onClick={this.onSubmit} className="ml-2" variant="success">
-              Login
-            </Button>
-          </Form>
-        </Jumbotron>
-      </React.Fragment>
-    );
-  }
-}
+
+  const displayAlert = () => {
+    if (showAlert) {
+      return (
+        <Alert
+          className="mx-auto"
+          variant="danger"
+          onClose={() => setAlert(false)}
+          dismissible
+        >
+          <Alert.Heading>
+            <div className="text-center">{message}</div>
+          </Alert.Heading>
+        </Alert>
+      );
+    }
+    return null;
+  };
+
+  return (
+    <React.Fragment>
+      <Navbar showRegister={true} />
+      <Jumbotron
+        fluid
+        style={{ "background-color": "#878787", height: "100vh" }}
+      >
+        {displayAlert()}
+        <Card
+          bg="dark"
+          text="white"
+          className="mx-auto"
+          style={{ width: "60rem", padding: "5px" }}
+        >
+          <h1 className="text-center">Login</h1>
+          <div className="loginForm mx-auto">
+            <LoginForm
+              changeEmail={setEmail}
+              changePassword={setPassword}
+              submit={onSubmit}
+            />
+          </div>
+        </Card>
+      </Jumbotron>
+    </React.Fragment>
+  );
+};
 
 export default Login;
