@@ -11,7 +11,7 @@ import postNumber from "../Images/instant-camera.png";
 import CardColumns from "react-bootstrap/CardColumns";
 import Postcard from "../Components/Postcard";
 import Card from "react-bootstrap/Card";
-import CardGroup from "react-bootstrap/CardGroup";
+import Jumbotron from "react-bootstrap/Jumbotron";
 
 class Profile extends Component {
   state = {
@@ -28,8 +28,13 @@ class Profile extends Component {
   componentDidMount() {
     this.loadProfileData();
     this.loadUserPosts();
+    this.postCleanup();
   }
 
+  postCleanup = async () => {
+    const response = await http.delete(def.postCleanup);
+    console.log(response.data);
+  };
   loadProfileData = async () => {
     const response = await http.get(def.baseURL + "getuser/me");
     const {
@@ -51,7 +56,6 @@ class Profile extends Component {
       posts: [...posts],
       finalPosts: [],
     });
-    console.log(this.state.followers);
   };
 
   handleDelete = async (id) => {
@@ -99,15 +103,32 @@ class Profile extends Component {
       <React.Fragment>
         <Navbar profile={true} />
 
-        <div className="jumbo">
-          <CardGroup className="container">
-            <Card style={{ width: "345px" }}>
+        <Jumbotron style={{ height: "100vh", "background-color": "#878787" }}>
+          <div className="profileDetails mx-auto">
+            <Card
+              bg="dark"
+              text="white"
+              style={{ width: "345px", height: "345px", marginLeft: "60px" }}
+            ></Card>
+            <Card
+              bg="dark"
+              text="white"
+              style={{
+                width: "345px",
+                height: "345px",
+                marginLeft: "20px",
+                marginRight: "20px",
+              }}
+            >
               <Card.Body>
                 <Image className=" profilePicture" src={fileName} rounded />
               </Card.Body>
             </Card>
-
-            <Card style={{ width: "354px" }}>
+            <Card
+              bg="dark"
+              text="white"
+              style={{ width: "354px", marginRight: "20px", height: "345px" }}
+            >
               <Card.Body>
                 <div className="textDetails">
                   <h1 className="name">
@@ -120,7 +141,11 @@ class Profile extends Component {
                 </div>
               </Card.Body>
             </Card>
-            <Card style={{ width: "240px" }}>
+            <Card
+              bg="dark"
+              text="white"
+              style={{ width: "240px", height: "345px" }}
+            >
               <Card.Body>
                 <div className="stats">
                   <div className="description">
@@ -162,12 +187,18 @@ class Profile extends Component {
                 </div>
               </Card.Body>
             </Card>
-          </CardGroup>
-
-          <div className="container cardMargin">
-            <CardColumns>{finalPosts}</CardColumns>
+            <Card
+              bg="dark"
+              text="white"
+              style={{ width: "345px", height: "345px", marginLeft: "20px" }}
+            ></Card>
           </div>
-        </div>
+          <div className="cardMargin">
+            <CardColumns style={{ marginLeft: "60px" }}>
+              {finalPosts}
+            </CardColumns>
+          </div>
+        </Jumbotron>
       </React.Fragment>
     );
   }
