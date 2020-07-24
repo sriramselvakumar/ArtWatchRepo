@@ -112,6 +112,16 @@ router.put("/update/:id", auth, async (req, res) => {
   }
 });
 
+router.delete("/cleanup", async (req, res) => {
+  let posts = await Post.find();
+  for (let a = 0; a < posts.length; a++) {
+    let { name, description, filename, _id } = posts[a];
+    if (name === "" || description === "" || filename === "") {
+      await Post.findByIdAndRemove(_id);
+    }
+  }
+});
+
 router.delete("/:id", auth, async (req, res) => {
   try {
     let post = await Post.findByIdAndRemove(req.params.id);
