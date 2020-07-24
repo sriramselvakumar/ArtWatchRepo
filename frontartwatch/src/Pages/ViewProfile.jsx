@@ -4,15 +4,13 @@ import http from "../axiosconfig/authaxios";
 import def from "../default.json";
 import Postcard from "../Components/Postcard";
 import "../CSS/Profile.css";
-import CardGroup from "react-bootstrap/CardGroup";
-import descriptionIcon from "../Images/descriptionfemale.png";
-import followersIcon from "../Images/followers.png";
-import followingIcon from "../Images/following.png";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
-import postNumber from "../Images/instant-camera.png";
-import Button from "react-bootstrap/Button";
 import CardColumns from "react-bootstrap/CardColumns";
+import Jumbotron from "react-bootstrap/Jumbotron";
+import Button from "react-bootstrap/Button";
+import ListGroup from "react-bootstrap/ListGroup";
+import ListGroupItem from "react-bootstrap/ListGroupItem";
 
 class ViewProfile extends Component {
   state = {
@@ -110,78 +108,41 @@ class ViewProfile extends Component {
     return (
       <React.Fragment>
         <Navbar view={true} />
-        <div className="jumbo">
-          <CardGroup className="container">
-            <Card style={{ width: "345px" }}>
-              <Card.Body>
-                <Image className=" profilePicture" src={fileName} rounded />
-              </Card.Body>
-            </Card>
-            <Card style={{ width: "354px" }}>
-              <Card.Body>
-                <div className="textDetails">
-                  <h1 className="name">
-                    {firstName} {lastName}
-                  </h1>
-                  <div className="description ">
-                    <Image className="Icons" src={descriptionIcon} />
-                    <p>{description}</p>
-                  </div>
-                  <div className="text-center">
-                    <Button onClick={this.handleFollow} variant="success">
-                      {buttonText}
+        <Jumbotron style={{ backgroundColor: "#878787", minHeight: "100vh" }}>
+          {" "}
+          <div className="cardMargin">
+            <CardColumns>
+              <Card
+                bg="dark"
+                text="white"
+                style={{ width: "18rem", marginRight: "20px" }}
+              >
+                <Card.Img variant="top" src={fileName} />
+                <Card.Title className="text-center">
+                  {firstName} {lastName}
+                </Card.Title>
+                <div className="text-center">
+                  <Button variant="outline-success" onClick={this.handleFollow}>
+                    {buttonText}
+                  </Button>
+                </div>
+                <ListGroup>
+                  <ListGroupItem className="bg-dark text-center">
+                    {description}
+                    <Button className="mr-1" variant="outline-success">
+                      Followers: {followers.length}
                     </Button>
-                  </div>
-                </div>
-              </Card.Body>
-            </Card>
-            <Card style={{ width: "240px" }}>
-              <Card.Body>
-                <div className="stats">
-                  <div className="description">
-                    <Image
-                      className="statsIcons followersIcon"
-                      src={followersIcon}
-                    />
-                    <div>
-                      <h3 className="followers statText">Followers</h3>
-                      <h3 className="name statText text-center">
-                        {followers.length}
-                      </h3>
-                    </div>
-                  </div>
-                  <div className="description">
-                    <Image
-                      className="statsIcons followersIcon"
-                      src={followingIcon}
-                    />
-                    <div>
-                      <h3 className="followers statText">Following</h3>
-                      <h3 className="name statText text-center">
-                        {following.length}
-                      </h3>
-                    </div>
-                  </div>
-                  <div className="description">
-                    <Image
-                      className="statsIcons followersIcon"
-                      src={postNumber}
-                    />
-                    <div>
-                      <h3 className="followers statText">Posts</h3>
-                      <h3 className="name statText text-center">
-                        {posts.length}
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-              </Card.Body>
-            </Card>
-          </CardGroup>
-          <div className="container cardMargin">
-            <CardColumns>{renderPosts}</CardColumns>
+
+                    <Button className="mx-auto" variant="outline-success">
+                      Following: {following.length}
+                    </Button>
+                  </ListGroupItem>
+                </ListGroup>
+              </Card>
+              {renderPosts}
+            </CardColumns>
           </div>
-        </div>
+        </Jumbotron>
       </React.Fragment>
     );
   }

@@ -1,18 +1,16 @@
 import React, { Component } from "react";
 import Navbar from "../Components/LogNavbar";
-import Image from "react-bootstrap/Image";
 import http from "../axiosconfig/authaxios";
 import "../CSS/Profile.css";
 import def from "../default.json";
-import descriptionIcon from "../Images/descriptionfemale.png";
-import followersIcon from "../Images/followers.png";
-import followingIcon from "../Images/following.png";
-import postNumber from "../Images/instant-camera.png";
 import CardColumns from "react-bootstrap/CardColumns";
+import CardDeck from "react-bootstrap/CardDeck";
 import Postcard from "../Components/Postcard";
 import Card from "react-bootstrap/Card";
 import Jumbotron from "react-bootstrap/Jumbotron";
-
+import ListGroup from "react-bootstrap/ListGroup";
+import ListGroupItem from "react-bootstrap/ListGroupItem";
+import Button from "react-bootstrap/Button";
 class Profile extends Component {
   state = {
     firstName: "",
@@ -102,99 +100,35 @@ class Profile extends Component {
     return (
       <React.Fragment>
         <Navbar profile={true} />
-
-        <Jumbotron style={{ height: "100vh", "background-color": "#878787" }}>
-          <div className="profileDetails mx-auto">
-            <Card
-              bg="dark"
-              text="white"
-              style={{ width: "345px", height: "345px", marginLeft: "60px" }}
-            ></Card>
-            <Card
-              bg="dark"
-              text="white"
-              style={{
-                width: "345px",
-                height: "345px",
-                marginLeft: "20px",
-                marginRight: "20px",
-              }}
-            >
-              <Card.Body>
-                <Image className=" profilePicture" src={fileName} rounded />
-              </Card.Body>
-            </Card>
-            <Card
-              bg="dark"
-              text="white"
-              style={{ width: "354px", marginRight: "20px", height: "345px" }}
-            >
-              <Card.Body>
-                <div className="textDetails">
-                  <h1 className="name">
-                    {firstName} {lastName}
-                  </h1>
-                  <div className="description ">
-                    <Image className="Icons" src={descriptionIcon} />
-                    <p>{description}</p>
-                  </div>
-                </div>
-              </Card.Body>
-            </Card>
-            <Card
-              bg="dark"
-              text="white"
-              style={{ width: "240px", height: "345px" }}
-            >
-              <Card.Body>
-                <div className="stats">
-                  <div className="description">
-                    <Image
-                      className="statsIcons followersIcon"
-                      src={followersIcon}
-                    />
-                    <div>
-                      <h3 className="followers statText">Followers</h3>
-                      <h3 className="name statText text-center">
-                        {followers.length}
-                      </h3>
-                    </div>
-                  </div>
-                  <div className="description">
-                    <Image
-                      className="statsIcons followersIcon"
-                      src={followingIcon}
-                    />
-                    <div>
-                      <h3 className="followers statText">Following</h3>
-                      <h3 className="name statText text-center">
-                        {following.length}
-                      </h3>
-                    </div>
-                  </div>
-                  <div className="description">
-                    <Image
-                      className="statsIcons followersIcon"
-                      src={postNumber}
-                    />
-                    <div>
-                      <h3 className="followers statText">Posts</h3>
-                      <h3 className="name statText text-center">
-                        {posts.length}
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-              </Card.Body>
-            </Card>
-            <Card
-              bg="dark"
-              text="white"
-              style={{ width: "345px", height: "345px", marginLeft: "20px" }}
-            ></Card>
-          </div>
+        <Jumbotron
+          fluid
+          style={{ minHeight: "100vh", "background-color": "#878787" }}
+        >
           <div className="cardMargin">
             <CardColumns style={{ marginLeft: "60px" }}>
+              <Card
+                bg="dark"
+                text="white"
+                style={{ width: "18rem", marginRight: "20px" }}
+              >
+                <Card.Img variant="top" src={fileName} />
+                <Card.Title className="text-center">
+                  {firstName} {lastName}
+                </Card.Title>
+                <ListGroup className="list-group-flush">
+                  <ListGroupItem className="bg-dark">
+                    <Card.Body>{description}</Card.Body>
+                    <Button className="mr-1" variant="outline-success">
+                      Followers: {followers.length}
+                    </Button>
+
+                    <Button className="mx-auto" variant="outline-success">
+                      Following: {following.length}
+                    </Button>
+                  </ListGroupItem>
+                </ListGroup>
+              </Card>
+
               {finalPosts}
             </CardColumns>
           </div>

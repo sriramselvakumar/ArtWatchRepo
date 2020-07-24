@@ -43,7 +43,7 @@ class Feed extends Component {
     return (
       <React.Fragment>
         <Navbar feed={true} />
-        <Jumbotron>
+        <Jumbotron style={{ backgroundColor: "#878787", minHeight: "100vh" }}>
           <div className="container">
             <CardColumns>{this.state.renderPosts}</CardColumns>
           </div>

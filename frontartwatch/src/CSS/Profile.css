@@ -1,6 +1,6 @@
 .profilePicture {
-  height: 300px;
-  width: 300px;
+  height: 30vh;
+  width: 30vh;
 }
 .jumbo {
   background-color: #cdcdcd;
@@ -14,7 +14,6 @@
 .stats {
   display: flex;
   flex-direction: column;
-
   width: 400px;
 }
 
