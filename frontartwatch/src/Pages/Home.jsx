@@ -15,27 +15,26 @@ const HomePage = () => {
       <Navbar showLogin={true} showRegister={true} showLogout={false} />
       <Jumbotron
         fluid
-        style={{ "background-color": "#878787", height: "100vh" }}
+        style={{
+          backgroundImage:
+            "linear-gradient(180deg, rgba(22,20,69,1) 0%, rgba(17,17,115,1) 42%, rgba(0,144,203,1) 100%)",
+          minHeight: "100vh",
+        }}
       >
         <Image className="Icon" src={ArtWatchIcon} />
-        <Card
-          bg="dark"
-          text="white"
-          style={{ width: "38rem", padding: "5px" }}
-          className="text-center mb-4 mx-auto mt-3"
+
+        <h1 className="Headings">Welcome To ArtWatch</h1>
+
+        <CardDeck
+          className="container mx-auto"
+          style={{
+            "margin-left": "5%",
+            "margin-right": "5%",
+            width: "90%",
+            textAlign: "center",
+          }}
         >
-          <Card.Title>
-            <h1 className="Headings">Welcome To ArtWatch</h1>
-          </Card.Title>
-        </Card>
-        <CardDeck style={{ "margin-left": "15px", "margin-right": "15px" }}>
-          <Card
-            bg="dark"
-            text="white"
-            className="ml-2"
-            style={{ width: "18rem" }}
-            className="mb-2"
-          >
+          <Card bg="dark" text="white" className="ml-2" className="mb-2">
             <Card.Body>
               <Card.Title className="cardText">
                 Post Your Own Artwork
@@ -52,12 +51,8 @@ const HomePage = () => {
               </div>
             </Card.Body>
           </Card>
-          <Card
-            bg="dark"
-            text="white"
-            style={{ width: "18rem" }}
-            className="mb-2"
-          >
+
+          <Card bg="dark" text="white" className="mb-2">
             <Card.Body>
               <Card.Title className="cardText">Explore Our Feed</Card.Title>
               <Card.Text className="cardText">
@@ -72,12 +67,8 @@ const HomePage = () => {
               </div>
             </Card.Body>
           </Card>
-          <Card
-            bg="dark"
-            text="white"
-            style={{ width: "18rem" }}
-            className="mb-2"
-          >
+
+          <Card bg="dark" text="white" className="mb-2">
             <Card.Body>
               <Card.Title className="cardText">Become A Celebrity</Card.Title>
               <Card.Text className="cardText">

@@ -8,14 +8,14 @@ const RegisterForm = (props) => {
       <Form>
         <Form.Row>
           <Col>
-            <Form.Label>First Name</Form.Label>
+            <Form.Label style={{ color: "white" }}>First Name</Form.Label>
             <Form.Control
               placeholder="First name"
               onChange={props.changeFirstName}
             />
           </Col>
           <Col>
-            <Form.Label>Last Name</Form.Label>
+            <Form.Label style={{ color: "white" }}>Last Name</Form.Label>
             <Form.Control
               placeholder="Last name"
               onChange={props.changeLastName}
@@ -24,7 +24,7 @@ const RegisterForm = (props) => {
         </Form.Row>
         <Form.Row className="mt-2">
           <Col>
-            <Form.Label>Email</Form.Label>
+            <Form.Label style={{ color: "white" }}>Email</Form.Label>
             <Form.Control
               type="email"
               placeholder="Enter email"
@@ -32,7 +32,7 @@ const RegisterForm = (props) => {
             />
           </Col>
           <Col>
-            <Form.Label>Password</Form.Label>
+            <Form.Label style={{ color: "white" }}>Password</Form.Label>
             <Form.Control
               type="password"
               placeholder="Password"

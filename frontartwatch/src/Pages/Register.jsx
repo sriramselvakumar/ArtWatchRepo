@@ -60,18 +60,16 @@ const Register = () => {
   const displayAlert = () => {
     if (showAlert) {
       return (
-        <div className="alert mx-auto">
-          <Alert
-            className="mx-auto"
-            variant="danger"
-            onClose={() => setAlert(false)}
-            dismissible
-          >
-            <Alert.Heading>
-              <div className="text-center">{message}</div>
-            </Alert.Heading>
-          </Alert>
-        </div>
+        <Alert
+          className="mx-auto"
+          variant="danger"
+          onClose={() => setAlert(false)}
+          style={{ width: "80%" }}
+          dismissible
+        >
+          <Alert.Heading>Error!</Alert.Heading>
+          <p>{message}</p>
+        </Alert>
       );
     }
     return null;
@@ -82,33 +80,30 @@ const Register = () => {
       <Navbar showLogin={true} />
       <Jumbotron
         fluid
-        style={{ "background-color": "#878787", height: "100vh" }}
+        style={{
+          backgroundImage:
+            "linear-gradient(180deg, rgba(22,20,69,1) 0%, rgba(17,17,115,1) 42%, rgba(0,144,203,1) 100%)",
+          minHeight: "100vh",
+          textColor: "white",
+        }}
       >
         {displayAlert()}
-        <Card
-          bg="dark"
-          text="white"
-          className="mx-auto"
-          style={{ width: "60rem", padding: "5px" }}
+
+        <h1 className="text-center color">Join Our Community</h1>
+        <div className="form mx-auto">
+          <RegisterForm
+            submit={onSubmit}
+            changeFirstName={setFirstName}
+            changeLastName={setLastName}
+            changeEmail={setEmail}
+            changePassword={setPassword}
+          />
+        </div>
+        <CardDeck
+          className="mt-4"
+          style={{ marginLeft: "5%", marginRight: "5%" }}
         >
-          <h1 className="text-center">Join Our Community</h1>
-          <div className="form mx-auto">
-            <RegisterForm
-              submit={onSubmit}
-              changeFirstName={setFirstName}
-              changeLastName={setLastName}
-              changeEmail={setEmail}
-              changePassword={setPassword}
-            />
-          </div>
-        </Card>
-        <CardDeck className="m-4">
-          <Card
-            bg="dark"
-            text="white"
-            style={{ width: "18rem" }}
-            className="mb-2"
-          >
+          <Card bg="dark" text="white" style={{ width: "18rem" }}>
             <Card.Body>
               <Card.Title className="cardText">
                 Post Your Own Artwork
@@ -120,12 +115,7 @@ const Register = () => {
               </Card.Text>
             </Card.Body>
           </Card>
-          <Card
-            bg="dark"
-            text="white"
-            style={{ width: "18rem" }}
-            className="mb-2"
-          >
+          <Card bg="dark" text="white" style={{ width: "18rem" }}>
             <Card.Body>
               <Card.Title className="cardText">Explore Our Feed</Card.Title>
               <Card.Text className="cardText">
@@ -135,12 +125,7 @@ const Register = () => {
               </Card.Text>
             </Card.Body>
           </Card>
-          <Card
-            bg="dark"
-            text="white"
-            style={{ width: "18rem" }}
-            className="mb-2"
-          >
+          <Card bg="dark" text="white" style={{ width: "18rem" }}>
             <Card.Body>
               <Card.Title className="cardText">Become A Celebrity</Card.Title>
               <Card.Text className="cardText">

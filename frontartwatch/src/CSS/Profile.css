@@ -1,66 +1,13 @@
-.profilePicture {
-  height: 30vh;
-  width: 30vh;
-}
-.jumbo {
-  background-color: #cdcdcd;
-  padding: 10px;
-}
-.profileDetails {
+.box {
+  min-width: 100%;
+
+  background-image: linear-gradient(
+    180deg,
+    rgba(22, 20, 69, 1) 0%,
+    rgba(17, 17, 115, 1) 42%,
+    rgba(0, 144, 203, 1) 100%
+  );
+  min-height: 100vh;
   display: flex;
-  flex-direction: row;
-}
-
-.stats {
-  display: flex;
-  flex-direction: column;
-  width: 400px;
-}
-
-.textDetails {
-  width: 300px;
-}
-.statText {
-  font-size: 20px;
-}
-.followers {
-  margin-top: 20px;
-}
-.followersIcon {
-  margin-top: 22px;
-}
-.name {
-  font-weight: normal;
-  text-align: center;
-}
-.statsIcons {
-  width: 55px;
-  height: 55px;
-}
-.description {
-  display: flex;
-
-  height: 100px;
-}
-.Icons {
-  width: 50px;
-  height: 50px;
-}
-
-.Cards {
-  margin-top: 30px;
-  margin-left: 10px;
-}
-
-.details {
-  display: flex;
-}
-
-.profileFlex {
-  display: flex;
-  flex-direction: row;
-}
-
-.cardMargin {
-  margin-top: 20px;
+  border: solid black 2px;
 }

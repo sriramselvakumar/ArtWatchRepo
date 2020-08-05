@@ -9,7 +9,7 @@ class LogoutButton extends Component {
   render() {
     return (
       <Link to="/">
-        <Button onClick={this.handleClick} variant="outline-success">
+        <Button onClick={this.handleClick} variant="outline-danger">
           Logout
         </Button>
       </Link>

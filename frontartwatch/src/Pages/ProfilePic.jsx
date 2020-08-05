@@ -8,7 +8,7 @@ import Image from "react-bootstrap/Image";
 import def from "../default.json";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-
+import "../CSS/Home.css";
 class ProfilePic extends Component {
   constructor(props) {
     super(props);
@@ -53,43 +53,50 @@ class ProfilePic extends Component {
     return (
       <React.Fragment>
         <Navbar showLogout={true} />
-        <Jumbotron fluid style={{ "background-color": "#878787", height: "100vh" }}>
-          <Card
-            bg="dark"
-            text="white"
-            className="mx-auto"
-            style={{ width: "800px", padding: "10px" }}
-          >
-            <h1 className="text-center">
-              Hey {this.state.firstName},Please Add your Profile Picture!{" "}
-            </h1>
-            <Image className="Icon" src={this.state.fileName} rounded />
+        <Jumbotron
+          fluid
+          style={{
+            backgroundImage:
+              "linear-gradient(180deg, rgba(22,20,69,1) 0%, rgba(17,17,115,1) 42%, rgba(0,144,203,1) 100%)",
+            minHeight: "100vh",
+          }}
+        >
+          <h1 className="text-center" style={{ color: "white" }}>
+            Hey {this.state.firstName},Add your Profile Picture!
+          </h1>
+          <div className="Icon">
+            <Image
+              className="container mx-auto"
+              src={this.state.fileName}
+              rounded
+            />
+          </div>
 
-            <div className="row">
-              <div className="Icon">
-                <Form>
-                  <Form.Group>
-                    <Form.File
-                      id="exampleFormControlFile1"
-                      label="Your Profile Picture"
-                      onChange={this.handleFile}
-                    />
-                  </Form.Group>
-                </Form>
-              </div>
+          <div className="row">
+            <div className="Icon">
+              <Form>
+                <Form.Group>
+                  <Form.File
+                    style={{ color: "white" }}
+                    id="exampleFormControlFile1"
+                    label="Your Profile Picture"
+                    onChange={this.handleFile}
+                  />
+                </Form.Group>
+              </Form>
             </div>
-            <div className="text-center">
-              <Link to="/createdescription">
-                <Button className="mr-1" variant="primary">
-                  Upload
-                </Button>
+          </div>
+          <div className="text-center">
+            <Link to="/createdescription">
+              <Button className="mr-1" variant="primary">
+                Upload
+              </Button>
 
-                <Button className="mr-1" variant="success">
-                  Skip Step
-                </Button>
-              </Link>
-            </div>
-          </Card>
+              <Button className="mr-1" variant="success">
+                Skip Step
+              </Button>
+            </Link>
+          </div>
         </Jumbotron>
       </React.Fragment>
     );

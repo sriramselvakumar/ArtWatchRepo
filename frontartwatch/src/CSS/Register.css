@@ -1,7 +1,11 @@
 .form {
-  width: 800px;
+  width: 40%;
   height: 220px;
 }
 .alert {
-  width: 800px;
+  width: 40%;
+}
+
+.color {
+  color: white;
 }

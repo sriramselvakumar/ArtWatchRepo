@@ -100,38 +100,40 @@ class Profile extends Component {
     return (
       <React.Fragment>
         <Navbar profile={true} />
+
         <Jumbotron
           fluid
-          style={{ minHeight: "100vh", "background-color": "#878787" }}
+          style={{
+            minHeight: "100vh",
+            backgroundImage:
+              "linear-gradient(180deg, rgba(22,20,69,1) 0%, rgba(17,17,115,1) 42%, rgba(0,144,203,1) 100%)",
+          }}
         >
-          <div className="cardMargin">
-            <CardColumns style={{ marginLeft: "60px" }}>
-              <Card
-                bg="dark"
-                text="white"
-                style={{ width: "18rem", marginRight: "20px" }}
-              >
-                <Card.Img variant="top" src={fileName} />
-                <Card.Title className="text-center">
-                  {firstName} {lastName}
-                </Card.Title>
-                <ListGroup className="list-group-flush">
-                  <ListGroupItem className="bg-dark">
-                    <Card.Body>{description}</Card.Body>
-                    <Button className="mr-1" variant="outline-success">
-                      Followers: {followers.length}
-                    </Button>
+          <CardColumns style={{ marginLeft: "11%" }}>
+            <Card bg="dark" text="white" style={{ width: "18rem" }}>
+              <Card.Img
+                style={{ width: "100%" }}
+                variant="top"
+                src={fileName}
+              />
+              <Card.Title className="text-center">
+                {firstName} {lastName}
+              </Card.Title>
+              <ListGroup className="list-group-flush">
+                <ListGroupItem className="bg-dark">
+                  <Card.Body>{description}</Card.Body>
+                  <Button className="mr-1" variant="outline-success">
+                    Followers: {followers.length}
+                  </Button>
 
-                    <Button className="mx-auto" variant="outline-success">
-                      Following: {following.length}
-                    </Button>
-                  </ListGroupItem>
-                </ListGroup>
-              </Card>
-
-              {finalPosts}
-            </CardColumns>
-          </div>
+                  <Button className="mx-auto" variant="outline-success">
+                    Following: {following.length}
+                  </Button>
+                </ListGroupItem>
+              </ListGroup>
+            </Card>
+            {finalPosts}
+          </CardColumns>
         </Jumbotron>
       </React.Fragment>
     );
@@ -139,3 +141,23 @@ class Profile extends Component {
 }
 
 export default Profile;
+
+/* <Card bg="dark" text="white" style={{ margin: "5%", width: "18rem" }}>
+            <Card.Img style={{ height: "100%" }} variant="top" src={fileName} />
+            <Card.Title className="text-center">
+              {firstName} {lastName}
+            </Card.Title>
+            <ListGroup className="list-group-flush">
+              <ListGroupItem className="bg-dark">
+                <Card.Body>{description}</Card.Body>
+                <Button className="mr-1" variant="outline-success">
+                  Followers: {followers.length}
+                </Button>
+
+                <Button className="mx-auto" variant="outline-success">
+                  Following: {following.length}
+                </Button>
+              </ListGroupItem>
+            </ListGroup>
+          </Card>
+          {finalPosts} */

@@ -3,10 +3,9 @@ import Jumbotron from "react-bootstrap/Jumbotron";
 import Navbar from "../Components/Navbar";
 import LoginForm from "../Components/LoginForm";
 import http from "../axiosconfig/authaxios";
-import Card from "react-bootstrap/Card";
 import def from "../default.json";
 import Alert from "react-bootstrap/Alert";
-import "../CSS/Login.css";
+
 const Login = () => {
   const [user, setUser] = useState({
     email: "",
@@ -45,11 +44,11 @@ const Login = () => {
           className="mx-auto"
           variant="danger"
           onClose={() => setAlert(false)}
+          style={{ width: "80%" }}
           dismissible
         >
-          <Alert.Heading>
-            <div className="text-center">{message}</div>
-          </Alert.Heading>
+          <Alert.Heading>Error!</Alert.Heading>
+          <p>{message}</p>
         </Alert>
       );
     }
@@ -61,24 +60,23 @@ const Login = () => {
       <Navbar showRegister={true} />
       <Jumbotron
         fluid
-        style={{ "background-color": "#878787", height: "100vh" }}
+        style={{
+          backgroundImage:
+            "linear-gradient(180deg, rgba(22,20,69,1) 0%, rgba(17,17,115,1) 42%, rgba(0,144,203,1) 100%)",
+          minHeight: "100vh",
+        }}
       >
         {displayAlert()}
-        <Card
-          bg="dark"
-          text="white"
-          className="mx-auto"
-          style={{ width: "60rem", padding: "5px" }}
-        >
-          <h1 className="text-center">Login</h1>
-          <div className="loginForm mx-auto">
-            <LoginForm
-              changeEmail={setEmail}
-              changePassword={setPassword}
-              submit={onSubmit}
-            />
-          </div>
-        </Card>
+
+        <h1 className="text-center" style={{ color: "white" }}>
+          Login
+        </h1>
+
+        <LoginForm
+          changeEmail={setEmail}
+          changePassword={setPassword}
+          submit={onSubmit}
+        />
       </Jumbotron>
     </React.Fragment>
   );

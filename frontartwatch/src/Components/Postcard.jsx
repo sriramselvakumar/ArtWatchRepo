@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import Card from "react-bootstrap/Card";
+import { Card, Button, CardDeck } from "react-bootstrap";
 import "../CSS/Postcard.css";
 import http from "../axiosconfig/authaxios";
 import def from "../default.json";
-import Button from "react-bootstrap/Button";
 
 class PostCard extends Component {
   state = {
@@ -106,12 +105,8 @@ class PostCard extends Component {
   render() {
     let { file, name, description } = this.state;
     return (
-      <Card bg={"dark"} text={"white"} style={{ width: "301px" }}>
-        <Card.Img
-          style={{ width: "299px", height: "299px" }}
-          variant="top"
-          src={file}
-        />
+      <Card bg={"dark"} text={"white"} style={{ width: "18rem" }}>
+        <Card.Img style={{ width: "100%" }} variant="top" src={file} />
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Text>{description}</Card.Text>

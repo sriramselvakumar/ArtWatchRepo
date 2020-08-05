@@ -84,43 +84,42 @@ class CreatePost extends Component {
     return (
       <React.Fragment>
         <Navbar create={true} />
-        <Jumbotron style={{ height: "100vh", "background-color": "#878787" }}>
-          <Card
-            className="mx-auto"
-            bg={"dark"}
-            text={"white"}
-            style={{ width: "800px", height: "540px" }}
-          >
-            <div className="box">
-              <h1 className="text-center">Create Post</h1>
-              <Image className="Icon" src={this.state.filename} rounded />
-              <Form>
-                <Form.Label>Name</Form.Label>
-                <Form.Control type="text" onChange={this.onChangeName} />
-                <Form.Label>Description</Form.Label>
-                <Form.Control
-                  onChange={this.onChangeDescription}
-                  as="textarea"
-                  rows="3"
-                />
-                <Form.File
-                  id="exampleFormControlFile1"
-                  label="Choose the picture"
-                  onChange={this.handleFile}
-                />
-              </Form>
-              <div className="mt-2">
-                <Button onClick={this.handleCreate} variant="success">
-                  Create
-                </Button>
-                <Link to="/myprofile">
-                  <Button className="ml-1" variant="danger">
-                    Cancel
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </Card>
+        <Jumbotron
+          style={{
+            minHeight: "100vh",
+            backgroundImage:
+              "linear-gradient(180deg, rgba(22,20,69,1) 0%, rgba(17,17,115,1) 42%, rgba(0,144,203,1) 100%)",
+          }}
+        >
+          <h1 style={{ color: "white" }} className="text-center">
+            Create Post
+          </h1>
+          <Image className="Icon" src={this.state.filename} rounded />
+          <Form style={{ color: "white", width: "50%", margin: "auto" }}>
+            <Form.Label>Name</Form.Label>
+            <Form.Control type="text" onChange={this.onChangeName} />
+            <Form.Label>Description</Form.Label>
+            <Form.Control
+              onChange={this.onChangeDescription}
+              as="textarea"
+              rows="3"
+            />
+            <Form.File
+              id="exampleFormControlFile1"
+              label="Choose the picture"
+              onChange={this.handleFile}
+            />
+          </Form>
+          <div className="mt-2 text-center">
+            <Button onClick={this.handleCreate} variant="success">
+              Create
+            </Button>
+            <Link to="/myprofile">
+              <Button className="ml-1" variant="danger">
+                Cancel
+              </Button>
+            </Link>
+          </div>
         </Jumbotron>
       </React.Fragment>
     );
