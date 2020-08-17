@@ -2,9 +2,30 @@ const { User } = require("../Models/UserModel");
 const bcrypt = require("bcrypt");
 const express = require("express");
 const router = express.Router();
-const Joi = require("joi");
 
 router.post("/", async (req, res) => {
+  const { email } = req.body;
+  let user = await User.findOne({ email });
+  let redirect = "";
+  if (!user) {
+    user = new User({
+      email,
+      profilePictureName: "Default.png",
+      description: "No Description Provided",
+      posts: [],
+      followers: [],
+      following: [],
+    });
+    redirect = "/createprofilepic";
+    user = await user.save();
+  } else {
+    redirect = "/myprofile";
+  }
+  const token = user.generateJWT();
+  res.header("x-auth-token", token).send({ token, redirect });
+});
+
+/*router.post("/", async (req, res) => {
   let user = await User.findOne({ email: req.body.email });
   if (!user) {
     return res.send(false);
@@ -15,6 +36,6 @@ router.post("/", async (req, res) => {
   }
   const token = user.generateJWT();
   res.header("x-auth-token", token).send(token);
-});
+});*/
 
 module.exports = router;

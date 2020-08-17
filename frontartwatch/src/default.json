@@ -1,8 +1,6 @@
 {
   "baseURL": "http://localhost:5000/api/",
   "uploadsURL": "http://localhost:5000/uploads/",
-  "registerUser": "http://localhost:5000/api/register/",
-  "registerValidation": "http://localhost:5000/api/register/validation",
   "loginUser": "http://localhost:5000/api/login/",
   "postCleanup": "http://localhost:5000/api/post/cleanup"
 }

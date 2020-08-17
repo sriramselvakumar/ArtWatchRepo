@@ -10,6 +10,7 @@ import Create from "./Pages/Create";
 import Edit from "./Pages/Edit";
 import Feed from "./Pages/Feed";
 import ProfileView from "./Pages/ViewProfile";
+import Middleware from "./Pages/Middleware";
 import "./App.css";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path="/edit" component={Edit} />
           <Route path="/feed" component={Feed} />
           <Route path="/viewprofile" component={ProfileView} />
+          <Route path="/middleware" component={Middleware} />
         </Switch>
       </Router>
     </React.Fragment>

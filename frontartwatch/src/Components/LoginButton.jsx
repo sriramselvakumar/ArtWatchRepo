@@ -1,16 +1,18 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import Button from "react-bootstrap/Button";
-class LoginButton extends Component {
-  render() {
-    return (
-      <Link to="/login">
-        <Button className="mr-1" variant="outline-success">
-          Login
-        </Button>
-      </Link>
-    );
-  }
-}
+import { useAuth0 } from "@auth0/auth0-react";
+
+const LoginButton = () => {
+  const { loginWithRedirect } = useAuth0();
+  return (
+    <Button
+      onClick={() => loginWithRedirect()}
+      className="mr-1"
+      variant="outline-success"
+    >
+      Login
+    </Button>
+  );
+};
 
 export default LoginButton;

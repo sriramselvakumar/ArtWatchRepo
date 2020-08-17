@@ -3,38 +3,19 @@ import Navbar from "react-bootstrap/Navbar";
 import ArtWatchIcon from "../Images/ArtWatchIcon.png";
 import Nav from "react-bootstrap/Nav";
 import LoginButton from "../Components/LoginButton";
-import RegisterButton from "../Components/RegisterButton";
+
 import LogoutButton from "../Components/LogoutButton";
 class NavBar extends Component {
   renderButtons = () => {
-    if (
-      this.props.showLogin &&
-      this.props.showRegister &&
-      !this.props.showLogout
-    ) {
+    if (this.props.showLogin && !this.props.showLogout) {
       return (
         <React.Fragment>
           <LoginButton />
-          <RegisterButton />
         </React.Fragment>
       );
-    } else if (
-      this.props.showLogout &&
-      !this.props.showRegister &&
-      !this.props.showLogin
-    ) {
+    } else if (this.props.showLogout && !this.props.showLogin) {
       return <LogoutButton />;
-    } else if (
-      this.props.showRegister &&
-      !this.props.showLogin &&
-      !this.props.showLogout
-    ) {
-      return <RegisterButton />;
-    } else if (
-      this.props.showLogin &&
-      !this.props.showLogout &&
-      !this.props.showRegister
-    ) {
+    } else if (this.props.showLogin && !this.props.showLogout) {
       return <LoginButton />;
     }
   };

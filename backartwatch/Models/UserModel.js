@@ -3,16 +3,11 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const UserSchema = new mongoose.Schema({
-  firstName: { type: String, required: true, minlength: 1, maxlength: 60 },
-  lastName: { type: String, required: true, minlength: 1, maxlength: 80 },
   email: {
     type: String,
     required: true,
-    minlength: 5,
-    maxlength: 50,
     unique: true,
   },
-  password: { type: String, required: true, minlength: 9, maxlength: 90 },
   profilePictureName: { type: String },
   description: { type: String },
   posts: [{ type: String }],

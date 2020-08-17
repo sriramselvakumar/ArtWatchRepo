@@ -1,20 +1,21 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-class LogoutButton extends Component {
-  handleClick = () => {
+import { useAuth0 } from "@auth0/auth0-react";
+
+const LogoutButton = () => {
+  const { logout } = useAuth0();
+  const handleClick = () => {
     localStorage.removeItem("token");
-    window.location = "/";
+    logout({ returnTo: window.location.origin });
   };
-  render() {
-    return (
-      <Link to="/">
-        <Button onClick={this.handleClick} variant="outline-success">
-          Logout
-        </Button>
-      </Link>
-    );
-  }
-}
+  return (
+    <Link to="/">
+      <Button onClick={handleClick} variant="outline-success">
+        Logout
+      </Button>
+    </Link>
+  );
+};
 
 export default LogoutButton;
