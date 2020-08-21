@@ -15,19 +15,16 @@ const HomePage = () => {
       <Navbar showLogin={true} showRegister={true} showLogout={false} />
       <Jumbotron
         fluid
-        style={{ "background-color": "#878787", height: "100vh" }}
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%)",
+          minHeight: "100vh",
+        }}
       >
         <Image className="Icon" src={ArtWatchIcon} />
-        <Card
-          bg="dark"
-          text="white"
-          style={{ width: "38rem", padding: "5px" }}
-          className="text-center mb-4 mx-auto mt-3"
-        >
-          <Card.Title>
-            <h1 className="Headings">Welcome To ArtWatch</h1>
-          </Card.Title>
-        </Card>
+
+        <h1 className="Headings">Welcome To ArtWatch</h1>
+
         <CardDeck style={{ "margin-left": "15px", "margin-right": "15px" }}>
           <Card
             bg="dark"

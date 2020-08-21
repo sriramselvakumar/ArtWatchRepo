@@ -1,0 +1,6 @@
+{
+  "baseURL": "/api/",
+  "uploadsURL": "/uploads/",
+  "loginUser": "/api/login/",
+  "postCleanup": "/api/post/cleanup"
+}

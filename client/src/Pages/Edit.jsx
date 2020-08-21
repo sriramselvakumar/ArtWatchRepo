@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import http from "../axiosconfig/authaxios";
 import def from "../default.json";
 import Navbar from "../Components/LogNavbar";
-import "../CSS/Create.css";
+
 import "../CSS/Home.css";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Image from "react-bootstrap/Image";

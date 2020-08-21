@@ -3,14 +3,16 @@ import Navbar from "../Components/LogNavbar";
 import http from "../axiosconfig/authaxios";
 import "../CSS/Profile.css";
 import def from "../default.json";
-import CardColumns from "react-bootstrap/CardColumns";
-import CardDeck from "react-bootstrap/CardDeck";
+import Spinner from "../Components/Spinner";
+import {
+  Jumbotron,
+  CardColumns,
+  ListGroup,
+  ListGroupItem,
+  Button,
+  Card,
+} from "react-bootstrap";
 import Postcard from "../Components/Postcard";
-import Card from "react-bootstrap/Card";
-import Jumbotron from "react-bootstrap/Jumbotron";
-import ListGroup from "react-bootstrap/ListGroup";
-import ListGroupItem from "react-bootstrap/ListGroupItem";
-import Button from "react-bootstrap/Button";
 class Profile extends Component {
   state = {
     firstName: "",
@@ -21,17 +23,20 @@ class Profile extends Component {
     posts: [],
     fileName: "",
     finalPosts: [],
+    loading: true,
   };
 
   componentDidMount() {
     this.loadProfileData();
     this.loadUserPosts();
     this.postCleanup();
+    this.setState({
+      loading: false,
+    });
   }
 
   postCleanup = async () => {
-    const response = await http.delete(def.postCleanup);
-    console.log(response.data);
+    await http.delete(def.postCleanup);
   };
   loadProfileData = async () => {
     const response = await http.get(def.baseURL + "getuser/me");
@@ -95,6 +100,7 @@ class Profile extends Component {
       following,
       posts,
       finalPosts,
+      loading,
     } = this.state;
 
     return (
@@ -102,36 +108,43 @@ class Profile extends Component {
         <Navbar profile={true} />
         <Jumbotron
           fluid
-          style={{ minHeight: "100vh", "background-color": "#878787" }}
+          style={{
+            minHeight: "100vh",
+            backgroundImage:
+              "radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%)",
+          }}
         >
-          <div className="cardMargin">
-            <CardColumns style={{ marginLeft: "60px" }}>
-              <Card
-                bg="dark"
-                text="white"
-                style={{ width: "18rem", marginRight: "20px" }}
-              >
-                <Card.Img variant="top" src={fileName} />
-                <Card.Title className="text-center">
-                  {firstName} {lastName}
-                </Card.Title>
-                <ListGroup className="list-group-flush">
-                  <ListGroupItem className="bg-dark">
-                    <Card.Body>{description}</Card.Body>
-                    <Button className="mr-1" variant="outline-success">
-                      Followers: {followers.length}
-                    </Button>
+          {loading && <Spinner />}
+          {!loading && (
+            <div className="cardMargin">
+              <CardColumns style={{ marginLeft: "2%" }}>
+                <Card
+                  bg="dark"
+                  text="white"
+                  style={{ width: "18rem", marginRight: "20px" }}
+                >
+                  <Card.Img variant="top" src={fileName} />
+                  <Card.Title className="text-center">
+                    {firstName} {lastName}
+                  </Card.Title>
+                  <ListGroup className="list-group-flush">
+                    <ListGroupItem className="bg-dark">
+                      <Card.Body>{description}</Card.Body>
+                      <Button className="mr-1" variant="outline-success">
+                        Followers: {followers.length}
+                      </Button>
 
-                    <Button className="mx-auto" variant="outline-success">
-                      Following: {following.length}
-                    </Button>
-                  </ListGroupItem>
-                </ListGroup>
-              </Card>
+                      <Button className="mx-auto" variant="outline-success">
+                        Following: {following.length}
+                      </Button>
+                    </ListGroupItem>
+                  </ListGroup>
+                </Card>
 
-              {finalPosts}
-            </CardColumns>
-          </div>
+                {finalPosts}
+              </CardColumns>
+            </div>
+          )}
         </Jumbotron>
       </React.Fragment>
     );

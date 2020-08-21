@@ -39,40 +39,34 @@ class Description extends Component {
         <Navbar showLogout={true} />
         <Jumbotron
           fluid
-          style={{ "background-color": "#878787", height: "100vh" }}
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%)",
+            height: "100vh",
+          }}
         >
-          <Card
-            bg="dark"
-            text="white"
+          <h1 className="text-center"> Please add a description of yourself</h1>
+          <Form.Group
             className="mx-auto"
-            style={{ width: "800px", padding: "20px" }}
+            style={{ width: "30%" }}
+            controlId="exampleForm.ControlTextarea1"
           >
-            <h1 className="text-center">
-              {" "}
-              Please add a description of yourself
-            </h1>
-            <Form.Group controlId="exampleForm.ControlTextarea1">
-              <Form.Label>Description</Form.Label>
-              <Form.Control
-                value={description}
-                onChange={this.onChange}
-                as="textarea"
-                rows="3"
-              />
-            </Form.Group>
-            <div className="text-center">
-              <Button
-                onClick={this.onSubmit}
-                className="mr-1"
-                variant="success"
-              >
-                Add Description
-              </Button>
-              <Link to="/myprofile">
-                <Button variant="primary">Skip Step</Button>
-              </Link>
-            </div>
-          </Card>
+            <Form.Label>Description</Form.Label>
+            <Form.Control
+              value={description}
+              onChange={this.onChange}
+              as="textarea"
+              rows="3"
+            />
+          </Form.Group>
+          <div className="text-center">
+            <Button onClick={this.onSubmit} className="mr-1" variant="success">
+              Add Description
+            </Button>
+            <Link to="/myprofile">
+              <Button variant="primary">Skip Step</Button>
+            </Link>
+          </div>
         </Jumbotron>
       </React.Fragment>
     );

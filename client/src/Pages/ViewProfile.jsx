@@ -4,13 +4,15 @@ import http from "../axiosconfig/authaxios";
 import def from "../default.json";
 import Postcard from "../Components/Postcard";
 import "../CSS/Profile.css";
-import Card from "react-bootstrap/Card";
-import Image from "react-bootstrap/Image";
-import CardColumns from "react-bootstrap/CardColumns";
-import Jumbotron from "react-bootstrap/Jumbotron";
-import Button from "react-bootstrap/Button";
-import ListGroup from "react-bootstrap/ListGroup";
-import ListGroupItem from "react-bootstrap/ListGroupItem";
+import {
+  Card,
+  Image,
+  CardColumns,
+  Jumbotron,
+  Button,
+  ListGroup,
+  ListGroupItem,
+} from "react-bootstrap";
 
 class ViewProfile extends Component {
   state = {
@@ -108,7 +110,13 @@ class ViewProfile extends Component {
     return (
       <React.Fragment>
         <Navbar view={true} />
-        <Jumbotron style={{ backgroundColor: "#878787", minHeight: "100vh" }}>
+        <Jumbotron
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%)",
+            minHeight: "100vh",
+          }}
+        >
           {" "}
           <div className="cardMargin">
             <CardColumns>

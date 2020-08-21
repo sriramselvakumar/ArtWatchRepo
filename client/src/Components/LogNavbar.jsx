@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import ArtWatchIcon from "../Images/ArtWatchIcon.png";
-import Logout from "../Components/LogoutButton";
+import Logout from "./LogoutButton";
 import Settings from "../Images/setting.png";
 
 class LoggedNavbar extends Component {
@@ -16,15 +16,6 @@ class LoggedNavbar extends Component {
             <Nav.Link href="/createpost">Create</Nav.Link>
           </Nav>
           <Nav className="ml-auto">
-            <Navbar.Brand href="#">
-              <img
-                alt="Settings icon"
-                src={Settings}
-                width="30"
-                height="30"
-                className="d-inline-block align-top"
-              />
-            </Navbar.Brand>
             <Logout />
           </Nav>
         </React.Fragment>
@@ -38,15 +29,6 @@ class LoggedNavbar extends Component {
             <Nav.Link href="/createpost">Create</Nav.Link>
           </Nav>
           <Nav className="ml-auto">
-            <Navbar.Brand href="#">
-              <img
-                alt="Settings icon"
-                src={Settings}
-                width="30"
-                height="30"
-                className="d-inline-block align-top"
-              />
-            </Navbar.Brand>
             <Logout />
           </Nav>
         </React.Fragment>
@@ -59,15 +41,6 @@ class LoggedNavbar extends Component {
             <Nav.Link href="/createpost">Create</Nav.Link>
           </Nav>
           <Nav className="ml-auto">
-            <Navbar.Brand href="#">
-              <img
-                alt="Settings icon"
-                src={Settings}
-                width="30"
-                height="30"
-                className="d-inline-block align-top"
-              />
-            </Navbar.Brand>
             <Logout />
           </Nav>
         </React.Fragment>
@@ -80,15 +53,6 @@ class LoggedNavbar extends Component {
             <Nav.Link href="/myprofile">Profile</Nav.Link>
           </Nav>
           <Nav className="ml-auto">
-            <Navbar.Brand href="#">
-              <img
-                alt="Settings icon"
-                src={Settings}
-                width="30"
-                height="30"
-                className="d-inline-block align-top"
-              />
-            </Navbar.Brand>
             <Logout />
           </Nav>
         </React.Fragment>
@@ -102,15 +66,6 @@ class LoggedNavbar extends Component {
             <Nav.Link href="/createpost">Create</Nav.Link>
           </Nav>
           <Nav className="ml-auto">
-            <Navbar.Brand href="#">
-              <img
-                alt="Settings icon"
-                src={Settings}
-                width="30"
-                height="30"
-                className="d-inline-block align-top"
-              />
-            </Navbar.Brand>
             <Logout />
           </Nav>
         </React.Fragment>
@@ -119,7 +74,7 @@ class LoggedNavbar extends Component {
   };
   render() {
     return (
-      <Navbar bg="dark" variant="dark">
+      <Navbar bg="dark" variant="dark" expand="lg">
         <Navbar.Brand href="/myprofile">
           <img
             alt="ArtWatch Logo"

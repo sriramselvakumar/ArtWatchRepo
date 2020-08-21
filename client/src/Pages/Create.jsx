@@ -1,14 +1,10 @@
 import React, { Component } from "react";
 import Navbar from "../Components/LogNavbar";
-import Jumbotron from "react-bootstrap/Jumbotron";
-import Form from "react-bootstrap/Form";
+import { Jumbotron, Form, Image, Card, Button } from "react-bootstrap";
 import http from "../axiosconfig/authaxios";
 import def from "../default.json";
-import Image from "react-bootstrap/Image";
-import Card from "react-bootstrap/Card";
 import "../CSS/Home.css";
-import "../CSS/Create.css";
-import Button from "react-bootstrap/Button";
+
 import { Link } from "react-router-dom";
 class CreatePost extends Component {
   state = {
@@ -84,43 +80,42 @@ class CreatePost extends Component {
     return (
       <React.Fragment>
         <Navbar create={true} />
-        <Jumbotron style={{ height: "100vh", "background-color": "#878787" }}>
-          <Card
-            className="mx-auto"
-            bg={"dark"}
-            text={"white"}
-            style={{ width: "800px", height: "540px" }}
-          >
-            <div className="box">
-              <h1 className="text-center">Create Post</h1>
-              <Image className="Icon" src={this.state.filename} rounded />
-              <Form>
-                <Form.Label>Name</Form.Label>
-                <Form.Control type="text" onChange={this.onChangeName} />
-                <Form.Label>Description</Form.Label>
-                <Form.Control
-                  onChange={this.onChangeDescription}
-                  as="textarea"
-                  rows="3"
-                />
-                <Form.File
-                  id="exampleFormControlFile1"
-                  label="Choose the picture"
-                  onChange={this.handleFile}
-                />
-              </Form>
-              <div className="mt-2">
-                <Button onClick={this.handleCreate} variant="success">
-                  Create
+        <Jumbotron
+          style={{
+            height: "100vh",
+            backgroundImage:
+              "radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%)",
+          }}
+        >
+          <div className="box mx-auto">
+            <h1 className="text-center">Create Post</h1>
+            <Image className="Icon" src={this.state.filename} rounded />
+            <Form className="mx-auto" style={{ width: "55%" }}>
+              <Form.Label>Name</Form.Label>
+              <Form.Control type="text" onChange={this.onChangeName} />
+              <Form.Label>Description</Form.Label>
+              <Form.Control
+                onChange={this.onChangeDescription}
+                as="textarea"
+                rows="3"
+              />
+              <Form.File
+                id="exampleFormControlFile1"
+                label="Choose the picture"
+                onChange={this.handleFile}
+              />
+            </Form>
+            <div className="text-center mt-2">
+              <Button onClick={this.handleCreate} variant="success">
+                Create
+              </Button>
+              <Link to="/myprofile">
+                <Button className="ml-1" variant="danger">
+                  Cancel
                 </Button>
-                <Link to="/myprofile">
-                  <Button className="ml-1" variant="danger">
-                    Cancel
-                  </Button>
-                </Link>
-              </div>
+              </Link>
             </div>
-          </Card>
+          </div>
         </Jumbotron>
       </React.Fragment>
     );

@@ -9,7 +9,7 @@ const Post = require("./Routes/Posts");
 
 require("dotenv").config();
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8000;
 app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
@@ -31,6 +31,17 @@ connection.once("open", () => {
   console.log("connected to Mongo");
 });
 
+const path = require("path");
+
+// ... other app.use middleware
+app.use(express.static(path.join(__dirname, "client", "build")));
+
+// ...
+// Right before your app.listen(), add this:
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+
 app.listen(port, () => {
-  console.log("Server runnin");
+  console.log(`Server runnin on port ${port} `);
 });

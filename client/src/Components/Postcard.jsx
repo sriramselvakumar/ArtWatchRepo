@@ -106,12 +106,8 @@ class PostCard extends Component {
   render() {
     let { file, name, description } = this.state;
     return (
-      <Card bg={"dark"} text={"white"} style={{ width: "301px" }}>
-        <Card.Img
-          style={{ width: "299px", height: "299px" }}
-          variant="top"
-          src={file}
-        />
+      <Card bg={"dark"} text={"white"} style={{ width: "18rem" }}>
+        <Card.Img style={{ width: "100%" }} variant="top" src={file} />
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Text>{description}</Card.Text>

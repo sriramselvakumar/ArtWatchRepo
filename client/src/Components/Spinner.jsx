@@ -6,7 +6,7 @@ const Loader = () => {
     <Spinner
       style={{ marginTop: "20%", marginLeft: "50%" }}
       animation="border"
-      variant="primary"
+      variant="danger"
     />
   );
 };
