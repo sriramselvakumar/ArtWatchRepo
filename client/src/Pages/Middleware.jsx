@@ -14,7 +14,7 @@ const TrialPage = () => {
 
   const loadToken = async () => {
     if (isAuthenticated) {
-      console.log("we are authenticated");
+      console.log(user.email);
       const { data } = await http.post(urls.loginUser, { email: user.email });
       console.log(data);
       localStorage.setItem("token", data.token);
