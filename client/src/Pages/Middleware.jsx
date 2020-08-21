@@ -14,9 +14,12 @@ const TrialPage = () => {
 
   const loadToken = async () => {
     if (isAuthenticated) {
+      console.log("we are authenticated");
       const { data } = await http.post(urls.loginUser, { email: user.email });
       localStorage.setItem("token", data.token);
       window.location = data.redirect;
+    } else {
+      console.log("we arent authenticated");
     }
   };
   return (
