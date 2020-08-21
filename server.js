@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
-const uri = process.env.ATLAS_URI || process.env.MONGODB_URI;
+const uri = process.env.MONGODB_URI;
 mongoose.connect(uri, {
   useUnifiedTopology: true,
   useNewUrlParser: true,

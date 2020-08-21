@@ -11,7 +11,7 @@ ReactDOM.render(
   <Auth0Provider
     domain={process.env.REACT_APP_AUTH_DOMAIN}
     clientId={process.env.REACT_APP_AUTH_CLIENTID}
-    redirectUri={"https://artwatch.herokuapp.com/middleware"}
+    redirectUri={"http://localhost:3000/middleware"}
   >
     <App />
   </Auth0Provider>,
