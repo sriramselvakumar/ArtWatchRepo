@@ -1,15 +1,16 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 import ArtWatchIcon from "../Images/ArtWatchIcon.png";
-import { Link } from "react-router-dom";
+
 import "../CSS/Home.css";
 import Card from "react-bootstrap/Card";
 import CardDeck from "react-bootstrap/CardDeck";
 import Navbar from "../Components/Navbar";
-
+import { useAuth0 } from "@auth0/auth0-react";
 const HomePage = () => {
+  const { loginWithRedirect } = useAuth0();
   return (
     <React.Fragment>
       <Navbar showLogin={true} showRegister={true} showLogout={false} />
@@ -43,9 +44,9 @@ const HomePage = () => {
                 friends anytime you please
               </Card.Text>
               <div className="text-center">
-                <Link to="/register">
-                  <Button variant="success">Post Your Art</Button>
-                </Link>
+                <Button onClick={() => loginWithRedirect()} variant="success">
+                  Post Your Art
+                </Button>
               </div>
             </Card.Body>
           </Card>
@@ -63,9 +64,9 @@ const HomePage = () => {
                 and like the artworks created by our artistic users
               </Card.Text>
               <div className="text-center">
-                <Link to="/register">
-                  <Button variant="success">Explore ArtWork Feed</Button>
-                </Link>
+                <Button onClick={() => loginWithRedirect()} variant="success">
+                  Explore ArtWork Feed
+                </Button>
               </div>
             </Card.Body>
           </Card>
@@ -83,9 +84,9 @@ const HomePage = () => {
                 waiting for? Get Started on becoming a Celebrity today!!
               </Card.Text>
               <div className="text-center">
-                <Link to="/register">
-                  <Button variant="success">Become A Celebrity</Button>
-                </Link>
+                <Button onClick={() => loginWithRedirect()} variant="success">
+                  Become A Celebrity
+                </Button>
               </div>
             </Card.Body>
           </Card>
