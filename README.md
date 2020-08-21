@@ -1,14 +1,8 @@
-# ArtWatch
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![alt text](https://i.imgur.com/yBOHF7t.png)
+# &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ArtWatch
 
-This my source code for the front and backend of my application. The application has now completed its development stage and from now on there will be incremental updates brought to it. Watch this Github repository to be notified of the latest features implemented
+## Description
+ArtWatch is a platform for artists of any caliber to showcase their work to fellow artists. ArtWatch's primary goal is to give you a set audience who are interested in your work while helping you find new art that might be an inspiration for your next project!
 
-## Process for Testing
+ArtWatch has been implemented using the MERN Technology stack along with the Auth0 API for a seamless authentication experience and industry level standard of security. 
 
-1. navigate to the ArtWatch folder using your terminal and navigate to `backartwatch` folder
-2. type and run the following `npm i` in the `backartwatch` folder
-3. Add .env file to this folder with and write the following into your .env file: `ATLAS_URI = <your mongodb atlas URI>`
-4. Go back to your terminal and set your JWT signature by typing the following: `export artwatch_jwtPrivateKey=<your key>`
-5. Then run `nodemon server.js`. After running this it should display `server running` and `connected to Mongo`
-6. Open a new window of your terminal and navigate to `frontartwatch` folder
-7. type the following and run `npm i`
-8. After npm has installed all the dependencies type and run `npm start` and your computer should start a development and start up the website in your default browser
